@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Symfony Standard Edition
 ========================
 
@@ -71,6 +71,4 @@ Enjoy!
 [11]: https://symfony.com/doc/2.7/logging.html
 [12]: https://symfony.com/doc/2.7/assetic/asset_management.html
 [13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-=======
-# poleteia-backend
->>>>>>> 179052ae8cad2de33452e81d93171cb3b53c29c1
+
