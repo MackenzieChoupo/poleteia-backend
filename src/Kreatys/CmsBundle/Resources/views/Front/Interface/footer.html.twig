@@ -1,0 +1,17 @@
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {% if params.logoFooter %}{% media params.logoFooter, 'grande' with {'class': 'img-responsive'} %}{% elseif params.logo %}{% media params.logo, 'grande' with {'class': 'img-responsive'} %}{% else %}Kreatys CMS{% endif %}
+                {{ params.seo.footer ? params.seo.footer|nl2br:'' }}
+            </div>
+        </div>
+    </div>
+    <div class="copyright">  
+        <div class="container">
+            {{ 'now'|date('Y') }} &copy; Kreatys - Tous droits réservés |
+            Réalisation <a href="http://www.kreatys.com" target="_blank">Kreatys</a>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,20 @@
+{% extends "KreatysUserBundle::layout.html.twig" %}
+    
+{% block fos_user_title %}
+    Confirmation de votre inscription
+{% endblock %}
+
+{% block fos_user_content %}
+
+    {% if citoyen is null %}                         
+        <div class="alert alert-danger">
+            <i class="fa fa-warning"></i> Le lien de confirmation est invalide.
+        </div>
+    {% else %}
+        <div class="alert alert-success">
+            <i class="fa fa-check"></i> Félicitations {{ citoyen.username }}, votre compte est maintenant activé.
+        </div>
+    {% endif %}
+
+{% endblock %}
+

@@ -1,0 +1,33 @@
+close: Close
+send: Send
+
+registration:
+    check_email_freelance: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte et terminer votre inscription.
+
+
+menu:
+    admin:
+        internaute:
+            compte: My account (surfer)
+            main: Surfer
+        freelance:
+            compte: My account (freelance)
+            main: Freelance
+        administration: Administration
+        acces_bo: BO access
+    internaute:
+        tableau_bord: Dashboard
+        dernieres_recherches: My last searches
+        mes_avis: My reviews
+        mes_favoris: My favorites freelances
+    freelance:
+        tableau_bord: Dashboard
+        fiche: My card
+        avis: My reviews
+        profil: My Profil
+        disponibilites: My availabilities
+        parametres: My settings
+    deconexion: Logout
+    mon_compte: My account
+    inscription: Register
+    connexion: Login

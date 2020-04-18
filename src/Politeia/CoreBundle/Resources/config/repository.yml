@@ -1,0 +1,16 @@
+services:
+    
+    politeia_core.repository.sondage:
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method:  getRepository
+        class: Politeia\CoreBundle\Repository\SondageRepository
+        arguments:
+            -  Politeia\CoreBundle\Entity\Sondage
+            
+    politeia_core.repository.citoyen:
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method:  getRepository
+        class: Politeia\CoreBundle\Repository\CitoyenRepository
+        arguments:
+            -  Politeia\CoreBundle\Entity\Citoyen
+               

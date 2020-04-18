@@ -1,0 +1,28 @@
+
+services:
+    
+    kreatys_cms.manager.block:
+        class: Kreatys\CmsBundle\Block\BlockServiceManager
+        arguments:
+            - @service_container
+            
+    kreatys_cms.manager.cms_page:
+        class: Kreatys\CmsBundle\Manager\CmsPageManager
+        arguments:
+            - @doctrine.orm.default_entity_manager
+            - @kreatys_cms.manager.cms_snapshot
+            - @service_container
+            - %kernel.default_locale%
+            
+    kreatys_cms.manager.cms_snapshot:
+        class: Kreatys\CmsBundle\Manager\CmsSnapshotManager
+        arguments:
+            - @doctrine.orm.default_entity_manager
+            - @kreatys_cms.snapshot_repository
+            - @kreatys_cms.manager.block
+            - @service_container
+            
+    kreatys_cms.manager.menu:
+        class: Kreatys\CmsBundle\Manager\CmsMenuManager
+        arguments:
+            - @doctrine.orm.default_entity_manager

@@ -1,0 +1,38 @@
+{% extends 'KreatysCmsBundle:Admin:base_tree_list.html.twig' %}
+
+{% import _self as tree %}
+{% macro menu(menus, admin, rootPages) %}
+    <ul{% if rootPages %} id="menuTreeList" class="page-tree"{% endif %}>
+        {% for menu in menus %}
+            <li class="page-tree-li" id="{{ menu.id }}">
+                <div class="page-tree__item">
+                    <div class="page-enabled{{ menu.enabled ? ' enabled' : '' }}" data-id="{{ menu.id }}" data-route="kreatys_cms_menu_enabled" data-toggle="tooltip" data-placement="top" title="Activer / désactiver le menu">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-{{ menu.enabled ? 'check' : 'times' }} fa-stack-1x"></i>
+                        </span>
+                    </div>
+                            <a class="page-tree__item__edit" href="{{ admin.generateObjectUrl('edit', menu) }}">{{ menu.label }} {% if menu.sousTitre %}<small><i>({{ menu.sousTitre }})</i></small>{% endif %}</a>
+                    {% if menu.page %}
+                        <a href="{{ path('admin_kreatys_cms_page_edit', {'id': menu.page.id}) }}"><i class="text-muted padding-left-10">{{ menu.page.url }}</i></a>
+                    {% else %}
+                        <i class="text-muted padding-left-10">{{ menu.url }}</i>
+                    {% endif %}
+
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <a class="btn-u btn-u-xs btn-u-orange" href="{{ admin.generateObjectUrl('edit', menu) }}" data-toggle="tooltip" data-placement="top" title="Editer"><i class="fa fa-edit"></i></a>
+                            <a class="btn-u btn-u-xs btn-u-red" href="{{ admin.generateObjectUrl('delete', menu) }}" data-toggle="tooltip" data-placement="top" title="Supprimer"><i class="fa fa-times"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                {% if menu.children|length %}
+                    {{ _self.menu(menu.children, admin, false) }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+{% block boxContent %}{{ tree.menu(admin.datagrid.results, admin, true) }}{% endblock %}

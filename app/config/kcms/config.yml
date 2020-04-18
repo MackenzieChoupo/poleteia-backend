@@ -1,0 +1,66 @@
+kreatys_cms:
+    templates:
+        layout:                         PoliteiaCoreBundle::layout.html.twig
+#        show:                           KreatysCmsBundle:Page:show.html.twig
+#        show_breadcrumb:                KreatysCmsBundle:Page:show_breadcrumb.html.twig
+        block_raw_content:              PoliteiaCoreBundle:Block:block_raw_content.html.twig
+        block_titre:                    PoliteiaCoreBundle:Block:block_titre.html.twig
+        block_image:                    PoliteiaCoreBundle:Block:block_image.html.twig
+#        block_title_text:               KreatysCmsBundle:Block:block_title_text.html.twig
+        block_contact_form:             PoliteiaCoreBundle:Block:block_form_contact.html.twig
+#        block_icon_text:                KreatysCmsBundle:Block:block_icon_text.html.twig
+#        block_container:                KreatysCmsBundle:Block:block_container.html.twig
+#        block_gallery_slideshow:        KreatysCmsBundle:Block:Gallery/slideshow.html.twig
+        block_container_anchor:         PoliteiaCoreBundle:Block:block_container_anchor.html.twig
+        block_menu:                     PoliteiaCoreBundle:Block:block_menu.html.twig
+    
+    block:
+        default: politeia_core.block.service.raw_content
+        container: politeia_core.block.service.container
+        security:
+            ROLE_ADMIN:
+#                - kreatys_cms.block.service.container
+                - kreatys_cms.block.service.container_anchor
+                - kreatys_cms.block.service.menu
+#                - kreatys_cms.block.service.raw_content
+#                - kreatys_cms.block.service.title_text
+#                - kreatys_cms.block.service.icon_text
+#                - kreatys_cms.block.service.image
+                - kreatys_cms.block.service.gallery
+#                - kreatys_cms.block.service.list_icon
+#                - kreatys_cms.block.service.titre
+#                - kreatys_cms.block.service.map
+#                - kreatys_cms.block.service.title_list_icon
+                - kreatys_cms.block.service.contact_form
+                
+                - politeia_core.block.service.container
+                - politeia_core.block.service.raw_content
+                - politeia_core.block.service.titre
+                - politeia_core.block.service.image
+                - politeia_core.block.service.button
+                - politeia_core.block.service.section_header
+                - politeia_core.block.service.feature
+                - politeia_core.block.service.tarif
+                
+            ROLE_SUPER_ADMIN:
+#                - kreatys_user.block.service.login
+#                - kreatys_user.block.service.register
+#                - kreatys_user.block.service.resetting_password
+        settings:
+#            text_align:
+            
+            background: {'':'Aucun','parallax parallax-red':'Parallax rouge','parallax parallax-blue':'Parallax bleu'}
+
+        contact:
+            form:
+                type: politeia_contact_form
+                handler: politeia_core.contact.form.handler
+                
+                
+    page:
+        security:
+#            roles: {'ROLE_USER':'avec un compte client'}
+
+    menu:
+        config:
+            ancre: true

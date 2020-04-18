@@ -1,0 +1,131 @@
+
+services:
+    
+    #***************************************************************************
+    #******************************* CONTAINER *********************************
+    #***** CONTAINER
+    kreatys_cms.block.service.container:
+        class:  Kreatys\CmsBundle\Block\Service\ContainerBlockService
+        arguments:
+            - kreatys_cms.block.service.container
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 10, group: conteneur, grouporder: 10 }
+            
+    #***** CONTAINER ONE PAGE
+    kreatys_cms.block.service.container_anchor:
+        class:  Kreatys\CmsBundle\Block\Service\ContainerAnchorBlockService
+        arguments:
+            - kreatys_cms.block.service.container_anchor
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 20, group: conteneur, grouporder: 10 }
+            
+    #***** MENU
+    kreatys_cms.block.service.menu:
+        class:  Kreatys\CmsBundle\Block\Service\MenuBlockService
+        arguments:
+            - kreatys_cms.block.service.menu
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 30, group: conteneur, grouporder: 10 }
+    
+    
+    #***************************************************************************
+    #**************************** TEXT ET TITRE ********************************
+    #***** TITLE TEXT
+    kreatys_cms.block.service.title_text:
+        class:  Kreatys\CmsBundle\Block\Service\TitleTextBlockService
+        arguments:
+            - kreatys_cms.block.service.title_text
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 10, group: TexteEtTitre, grouporder: 20 }
+            
+    #***** RAW CONTENT
+    kreatys_cms.block.service.raw_content:
+        class:  Kreatys\CmsBundle\Block\Service\RawContentBlockService
+        arguments:
+            - kreatys_cms.block.service.raw_content
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 20, group: TexteEtTitre, grouporder: 20 }
+    
+    #***** TITRE
+    kreatys_cms.block.service.titre:
+        class:  Kreatys\CmsBundle\Block\Service\TitreBlockService
+        arguments:
+            - kreatys_cms.block.service.titre
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 30, group: TexteEtTitre, grouporder: 20 }
+    
+    #***** LIST ICON
+    kreatys_cms.block.service.list_icon:
+        class:  Kreatys\CmsBundle\Block\Service\ListIconBlockService
+        arguments:
+            - kreatys_cms.block.service.title_list_icon
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 40, group: TexteEtTitre, grouporder: 20 }
+    
+    #***** ICON TEXT
+    kreatys_cms.block.service.icon_text:
+        class:  Kreatys\CmsBundle\Block\Service\IconTextBlockService
+        arguments:
+            - kreatys_cms.block.service.icon_text
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 50, group: TexteEtTitre, grouporder: 20 }
+    
+    
+    #***************************************************************************
+    #************************** PHOTOS OU GALERIES *****************************
+    #***** IMAGE
+    kreatys_cms.block.service.image:
+        class:  Kreatys\CmsBundle\Block\Service\ImageBlockService
+        arguments:
+            - kreatys_cms.block.service.image
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 10, group: PhotosOuGaleries, grouporder: 30 }
+    
+    #***** GALLERY
+    kreatys_cms.block.service.gallery:
+        class:  Kreatys\CmsBundle\Block\Service\GalleryBlockService
+        arguments:
+            - kreatys_cms.block.service.gallery
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 20, group: PhotosOuGaleries, grouporder: 30 }
+    
+    #***** VIDEO
+    kreatys_cms.block.service.video:
+        class:  Kreatys\CmsBundle\Block\Service\VideoBlockService
+        arguments:
+            - kreatys_cms.block.service.video
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 30, group: PhotosOuGaleries, grouporder: 30 }
+    
+    
+    #***************************************************************************
+    #********************************* AUTRES **********************************
+    #***** CONTACT FORM
+    kreatys_cms.block.service.contact_form:
+        class:  Kreatys\CmsBundle\Block\Service\ContactFormBlockService
+        arguments:
+            - kreatys_cms.block.service.contact_form
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 40 }
+    
+    #***** MAP
+    kreatys_cms.block.service.map:
+        class:  Kreatys\CmsBundle\Block\Service\MapBlockService
+        arguments:
+            - kreatys_cms.block.service.map
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 30 }
+    

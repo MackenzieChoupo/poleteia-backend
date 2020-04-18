@@ -1,0 +1,7 @@
+default: Autres
+Slideshome: Diaporamas (Accueil)
+Slideshow: Diaporamas
+Médias: Médias
+
+kreatys_cms.media.provider.video: Vidéo
+kreatys_cms.media.provider.video.description: Ajouter une vidéo   

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block metas %}{% endblock %}
+    {% block stylesheets %}
+        {% stylesheets
+            'bundles/kreatyscms/assets/bootstrap/css/bootstrap.css'
+            'bundles/kreatyscms/assets/font-awesome/css/font-awesome.css'
+            'bundles/kreatyscms/css/front/style.css'
+
+            output='css/kreatys-cms-style.css'
+            filter='?yui_css,cssrewrite'
+        %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
+
+        {% if page is defined %}
+            {% for stylesheet in page.stylesheets|split('\n') %}
+                {% if stylesheet is not empty %}
+                    <link href="{{ asset(stylesheet|trim) }}" rel="stylesheet" media="screen" />
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+    {% block icon %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% endblock %}
+    <script src="{{ asset('bundles/kreatyscms/assets/jquery/jquery-1.11.3.min.js') }}"></script>
+    
+    {% if app.environment == 'preprod' %}
+        <link href='/bundles/kreatyscms/css/preprod/preprod.css' rel='stylesheet' type='text/css'>
+    {% endif %}
+</head>
+<body class="{% block bodyClass %}kcms{% endblock %}">
+    {% if app.environment == 'preprod' %}
+        {% include 'KreatysCmsBundle:Front:Preprod/i-am-in-preprod.html.twig' %}
+    {% endif %}
+    {% block body %}
+
+    {% block header %}{% endblock %}
+    {% block breadcrumb %}{% endblock %}
+{#    {% block header %}{% include 'KreatysCmsBundle:Front:Interface/header.html.twig' %}{% endblock %}#}
+{#    {% block breadcrumb %}{% include 'KreatysCmsBundle:Front:Interface/breadcrumb.html.twig' %}{% endblock %}#}
+
+    {% block flashMessages %}
+        {% from 'MopaBootstrapBundle::flash.html.twig' import flash, advanced_flash %}
+        {% set flashbag = app.session.flashbag.all %}
+        {#        {{ dump(flashbag|length) }}#}
+        {% set numFlash = flashbag|length %}
+        {% if numFlash > 0 %}<div class="container padding-top-10">{% endif %}
+            {% for label, flashes in flashbag %}
+                {% for message in flashes %}
+                    {{ flash(label, message, true, true) }}
+                {% endfor %}
+            {% endfor %}
+            {% if numFlash > 0 %}</div>{% endif %}
+            {#        {{ dump(flashbag) }}#}
+        {% endblock %}
+
+    {% block content %}<div class="content"></div>{% endblock %}
+
+{% block footer %}{% include 'KreatysCmsBundle:Front:Interface/footer.html.twig' %}{% endblock %}
+
+{% endblock %}
+
+{#                'bundles/kreatyscms/assets/jquery/jquery-1.11.3.min.js'#}
+{% block javascripts %}
+    {% javascripts
+                'bundles/kreatyscms/assets/bootstrap/js/bootstrap.js'
+                'bundles/fosjsrouting/js/router.js'
+
+                output='js/kreatys-cms-js.js'
+                filter='?yui_js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}" ></script>
+    {% endjavascripts %}
+
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    {% if page is defined %}
+        {% for javascript in page.javascripts|split('\n') %}
+            {% if javascript is not empty %}
+                <script type="text/javascript" src="{{ asset(javascript|trim) }}" ></script>
+            {% endif %}
+        {% endfor %}
+        {{ page.googleAnalitics ? page.googleAnalitics|raw:params.seo.googleAnalitics|raw }}
+    {% endif %}
+{% endblock %}
+</body>
+</html>

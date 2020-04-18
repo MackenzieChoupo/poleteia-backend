@@ -1,0 +1,124 @@
+{% extends 'KreatysCmsBundle:Admin:base_tree_list.html.twig' %}
+
+{% import _self as tree %}
+{% macro pages(pages, admin, rootPages, default_locale) %}
+    <ul{% if rootPages %} class="page-tree"{% endif %}>
+        {% for page in pages if (not page.parent or not rootPages)%}
+            <li>
+                <div class="page-tree__item">
+                    {% if page.parent %}<i class="fa fa-caret-right"></i>{% endif %}
+                    <div class="page-enabled{{ page.enabled ? ' enabled' : '' }}" data-id="{{ page.id }}" data-route="kreatys_cms_pages_enabled" data-toggle="tooltip" data-placement="top" title="Activer / désactiver la page">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-{{ page.enabled ? 'check' : 'times' }} fa-stack-1x"></i>
+                        </span>
+                    </div>
+                    <a class="page-tree__item__edit" href="{{ admin.generateObjectUrl('edit', page) }}">{{ page.name }}</a>
+                    <i class="text-muted padding-left-10">{{ page.url }}</i>
+
+                    <div class="pull-right">
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            <div class="btn-group btn-publish" style="margin-right: 20px;">
+                                <a class="btn-u btn-u-xs btn-u-purple" href="{{ admin.generateObjectUrl('publish_force', page) }}" data-toggle="tooltip" data-placement="top" title="{{ admin.trans('action_page_publish_force') }}"><i class="fa fa-cloud-upload"></i></a>
+                            </div>
+                        {% endif %}
+                        {% if page.edited %}
+                            <div class="btn-group btn-publish" style="margin-right: 20px;">
+                                <span class="label label-u pull-left" style="margin-top: 1px;">editée</span>
+                                <a class="btn-u btn-u-xs btn-u" href="{{ admin.generateObjectUrl('publish', page) }}" data-toggle="tooltip" data-placement="top" title="Publier"><i class="fa fa-cloud-upload"></i></a>
+                            </div>
+                        {% endif %}
+                        {% if page.parent and app.request.get('tl') == default_locale %}
+                        <div class="btn-group" style="margin-right: 10px;">                            
+                            <a class="btn-u btn-u-xs btn-u-brown btn-duplicate" href="#" data-id="{{ page.id }}" data-toggle="tooltip" data-placement="top" title="Dupliquer"><i class="fa fa-copy"></i></a>
+                        </div>
+                        {% endif %}
+                        <div class="btn-group">
+                            <a class="btn-u btn-u-xs btn-u-default" href="{{ admin.generateObjectUrl('compose', page) }}" data-toggle="tooltip" data-placement="top" title="Composer"><i class="fa fa-magic"></i></a>
+                            <a class="btn-u btn-u-xs btn-u-blue" href="{{ admin.generateObjectUrl('preview', page) }}" data-toggle="tooltip" data-placement="top" title="Prévisualiser"><i class="fa fa-eye"></i></a>
+                            <a class="btn-u btn-u-xs btn-u-orange" href="{{ admin.generateObjectUrl('edit', page) }}" data-toggle="tooltip" data-placement="top" title="Editer"><i class="fa fa-edit"></i></a>
+                            <a class="btn-u btn-u-xs btn-u-red" href="{{ admin.generateObjectUrl('delete', page) }}" data-toggle="tooltip" data-placement="top" title="Supprimer"><i class="fa fa-times"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                {% if page.children|length %}
+                    {{ _self.pages(page.children, admin, false, default_locale) }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+{% block boxContent %}{{ tree.pages(admin.datagrid.results, admin, true, default_locale) }}{% endblock %}
+
+
+{% block sonata_wrapper %}
+    {{ parent() }}
+
+    <div aria-hidden="true" role="dialog" tabindex="-1" id="modalDupliactePage" class="modal fade compose-modal" style="display: none;">          
+        <div class="modal-dialog">			
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Dupliquer une page</h4>
+                </div>
+                <form action="{{ admin.generateUrl('duplicate') }}" method="POST">
+                    <div class="modal-body">                    
+                        <div class="form-group">
+                            <label for="duplicate[name]" class="control-label required">Nom de la page</label>                            
+                            <div class="sonata-ba-field sonata-ba-field-standard-natural">
+                                <input type="text" value="" class=" form-control" required="required" name="duplicate[name]" id="duplicate_name">    
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="duplicate[title]" class="control-label">Titre de la page</label>                            
+                            <div class=" sonata-ba-field sonata-ba-field-standard-natural">
+                                <input type="text" value="" class=" form-control" name="duplicate[title]" id="duplicate_title">
+                            </div>
+                        </div> 
+                        <input type="hidden" name="duplicate[page_id]" id="duplicate_page_id" value="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary">Valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+                
+    <div id="loading" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.6); z-index: 9999; display: none;">
+       <div  style="color: white; margin: 200px auto; position: relative; text-align: center;">
+        <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+       </div>
+        
+    </div>
+{% endblock %}
+    
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script type="text/javascript">
+        $(function() {
+            $('a.btn-duplicate').on('click', function() {
+                var pageId = $(this).data('id');                
+                $('#duplicate_name, #duplicate_title').val('');
+                $('#duplicate_page_id').val(pageId);
+                $('#modalDupliactePage').modal({
+                    show: true
+                });
+            });
+            
+            
+            
+            $('#modalDupliactePage button[type="submit"]').on('click', function() {
+                $('#modalDupliactePage').modal('hide');
+                $('#loading').show();
+            });
+        });
+    </script>
+    
+{% endblock %}  

@@ -1,0 +1,11 @@
+
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+    {% if front %}
+        {% include 'KreatysCmsBundle:Block:Menu/navbar.html.twig' %}
+    {% else %}
+        <p>Bar de menu</p>
+    {% endif %}
+{% endblock %}

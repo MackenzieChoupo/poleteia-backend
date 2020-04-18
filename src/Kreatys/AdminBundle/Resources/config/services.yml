@@ -1,0 +1,24 @@
+services:
+    sonata.admin.block.stats:
+        class: Kreatys\AdminBundle\Block\AdminStatsBlockService
+        arguments:
+            - sonata.admin.block.stats
+            - @templating
+            - @sonata.admin.pool
+            - @security.token_storage
+        tags:
+            - { name: sonata.block, type: sonata.admin.block.stats }
+            
+    sonata.admin.block.last:
+        class: Kreatys\AdminBundle\Block\AdminLastBlockService
+        arguments:
+            - sonata.admin.block.last
+            - @templating
+            - @sonata.admin.pool
+            - @security.token_storage
+        tags:
+            - { name: sonata.block, type: sonata.admin.block.last }
+
+    app.push.sender:
+        class: Politeia\CoreBundle\Service\PushSender
+        arguments : []

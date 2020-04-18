@@ -1,0 +1,29 @@
+
+services:
+    
+    date.twig.extension:
+        class: Twig_Extensions_Extension_Date
+        arguments:
+            - @translator
+        tags: [{ name: 'twig.extension' }]
+        
+    kreatys.twig.block_service_extension:
+        class: Kreatys\CmsBundle\Twig\BlockServiceExtension
+        arguments: 
+            - @service_container
+        tags:
+            - { name: twig.extension }
+            
+    kreatys.twig.route_extension:
+        class: Kreatys\CmsBundle\Twig\RouteExtension
+        arguments: 
+            - @service_container
+        tags:
+            - { name: twig.extension }
+            
+    kreatys.twig.front_extension:
+        class: Kreatys\CmsBundle\Twig\FrontExtension
+        arguments: 
+            - @doctrine.orm.entity_manager
+        tags:
+            - { name: twig.extension }

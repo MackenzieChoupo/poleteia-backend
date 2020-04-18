@@ -1,0 +1,102 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+
+    {% if  front %}
+        <div class="{{ settings.background }}">
+            {% if kblock.lvl == 1 %}
+                <div class="container">
+                {% endif %}
+                <div class="{{ settings.padding_top }} {{ settings.padding_bottom }}">
+
+                {% endif %}   
+                
+                {{ form_start(form, {'attr':{'id':'contactForm','data-toggle':'validator','class':''} }) }}
+{#                <form id="contactForm" data-toggle="validator">#}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_widget(form.nom) }}
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.email) }}
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.sujet) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_widget(form.message) }}
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <button type="submit" id="form-submit" class="btn btn-info btn-md btn-form-submit">Envoyer</button>
+                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+{#                </form>#}
+                {{ form_end(form) }}
+
+                {% if  front %}      
+                </div>
+                {% if kblock.lvl == 1 %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+
+    {#{% if not front %}
+        <div class="container">
+        {% else %}
+            <div class="{{ settings.background }}">
+                {% if kblock.lvl == 1 %}
+                    <div class="container">
+                    {% endif %}
+                    <div class="{{ settings.padding_top }} {{ settings.padding_bottom }}">
+                    {% endif %}
+                    <form class="form-horizontal" action="" method="post">
+                        <div class="form-group contact_name_form_group">
+                            <label class="control-label required" for="contact_name">Nom</label>
+                            <div class="">
+                                <input type="text" class="form-control" required="required" name="contact[name]" id="contact_name">
+                            </div>
+                        </div>
+
+                        <div class="form-group contact_email_form_group">
+                            <label class="control-label required" for="contact_email">Email</label>
+                            <div class="">
+                                <input type="text" class="form-control" required="required" name="contact[email]" id="contact_email">
+                            </div>
+                        </div>
+
+                        <div class="form-group contact_message_form_group">
+                            <label class="control-label required" for="contact_message">Message</label>
+                            <div class="col-md-6">
+                                <textarea class=" form-control" required="required" name="contact[message]" id="contact_message"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">								
+                            <button class="btn btn-primary" type="submit">Envoyer</button>
+                            <button class="btn" type="reset">Réinitialiser</button>
+                        </div>						
+                    </form>
+                    {% if not front %}
+                    </div>
+                {% else %}
+                </div>
+                {% if kblock.lvl == 1 %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}#}
+
+
+
+{% endblock %}
+

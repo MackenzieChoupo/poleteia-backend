@@ -1,0 +1,57 @@
+"News List": Liste des actualités
+"Mairie List": Liste des mairies
+"Signalement List": Liste des signalements
+"Signalement Moderate List": Liste des signalements à modérer
+"Boite A Idee Theme List": Liste des thèmes de boite à idées
+"Boite A Idee Question List": Liste des questions
+"Boite A Idee Reponse List": Liste des réponses
+"Publicite List": Liste des publicités
+"Planning List": Liste des plannings
+
+politeia_core:
+    admin:
+        mairie:
+            label: Liste des mairies
+        mairie_horaire:
+            label: Horaires
+        news:
+            label: Liste des actualités
+            label_create: Ajouter une actualité
+        alerte_pcs:            
+            label: Alerte PCS
+        signalement:
+            label: Liste des signalements
+        signalement_moderate:
+            label: Liste des signalements à modérer
+        boite_a_idee_theme:
+            label: Liste des thèmes
+            label_create: Ajouter un thème
+        boite_a_idee_question:
+            label: Liste des questions
+            label_create: Ajouter une question
+        boite_a_idee_reponse:
+            label: Gestion des réponses
+        sondage:
+            label: Liste des sondages
+            label_create: Ajouter un sondage
+        planning:
+            label: Plannings
+            label_create: Ajouter un planning
+        publicite:
+            label: Liste des publicités
+            label_create: Ajouter une publicité
+            
+boite_a_idee:
+    theme:
+        1: Éduction & Jeunesse
+        2: Social
+        3: Urbanisme & Travaux
+        4: Animation
+        
+admin:
+    block:
+        tarif:
+            disponible:
+                storePlay: App Store ET Google Play
+                store: App Store
+                play: Google Play

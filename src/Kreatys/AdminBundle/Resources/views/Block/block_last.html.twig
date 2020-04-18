@@ -1,0 +1,44 @@
+{#
+This file is part of the Sonata package.
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+#}
+
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    <!-- small box -->
+    {#    {{ dump(settings) }}#}
+    {#    {{ dump(pager) }}#}
+    {#    {{ dump(datagrid.results) }}#}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa {{ settings.icon }}"></i> {{ settings.text|trans({}, admin.translationDomain) }} ({{ pager.count }})</h3>
+        </div>
+        <div class="box-body">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ settings.title }}</th>
+                        <th>Date</th>
+{#                        <th>&nbsp;</th>#}
+                    </tr>
+                </thead>
+                <tbody>
+                {% for result in datagrid.results %}
+                    <tr>
+                        <td>{{ result }}</td>
+                        <td class="text-center">{{ result.created|date("d/m/Y \\à H\\hi") }}</td>
+                    </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">{{ settings.emptyText }}</td>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+            <div class="box-footer"><a href="{{ admin.generateUrl('list', {filter: settings.filters}) }}" class="btn btn-block btn-sm btn-primary">Voir la liste complète</a></div>
+    </div>
+{% endblock %}

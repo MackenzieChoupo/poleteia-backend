@@ -1,0 +1,46 @@
+"ROLE_ADMIN: ROLE_USER, ROLE_SONATA_ADMIN": Administrateur
+"ROLE_USER": Utilisateur
+"ROLE_SONATA_ADMIN": Administrateur (sonata)
+"ROLE_SUPER_ADMIN: ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, SONATA": Super Administrateur
+"ROLE_SUPER_ADMIN: ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH": Super Administrateur
+"ROLE_ALLOWED_TO_SWITCH": Allowed to switch
+"SONATA: ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT, ROLE_SONATA_PAGE_ADMIN_BLOCK_EDIT": Admin pages
+"ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT": Admin édition des pages
+"ROLE_SONATA_PAGE_ADMIN_BLOCK_EDIT": Admin Blocs
+
+ROLE_SUPER_ADMIN: Super Administrateur
+ROLE_ADMIN: Administrateur
+ROLE_USER_: "Internaute"
+
+close: Fermer
+send: Envoyer
+submit: Valider
+
+profil:
+    prenom: Prénom
+    nom: Nom
+user.role: Rôle
+profil_tab: Profil
+
+informations_connexion: Informations de connexion
+informations_profil: Informations de profil
+roles_droits: Rôles / Droits
+user: Utilisateur
+user_management: Gestion
+
+
+form:
+    label_username: Identifiant
+    label_email: Email
+    label_plain_password: Mot de passe
+    label_locked: Bloqué
+    label_expired: Expiré
+    label_enabled: Activé
+    label_credentials_expired: Droits expirés
+
+
+=: =
+>=: >=
+>: >
+<=: <=
+<: <

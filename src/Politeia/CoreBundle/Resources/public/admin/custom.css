@@ -1,0 +1,63 @@
+/* 
+    Created on : 8 déc. 2016, 13:19:28
+    Author     : remi
+*/
+
+.table>thead>tr>th {
+    /*padding: 0 8px;*/
+}
+
+th.sonata-ba-list-field-header-order-desc a, 
+th.sonata-ba-list-field-header-order-asc a {
+    /*margin-left: 10px;*/
+    /*padding: 0px 6px;*/
+    display: block;
+}
+
+.sonata-ba-list-field-header-boolean {
+    width: 70px;
+}
+.sonata-ba-list-field-header-currency {
+    width: 90px;
+}
+.sonata-ba-list-field-header-actions  {
+    width: 190px;
+}
+
+.sonata-ba-list-field-boolean {
+    text-align: center;
+    vertical-align: middle !important;
+}
+.sonata-ba-list-field-actions {
+    text-align: left;
+}
+.sonata-ba-list-field-actions .btn-group {
+    display: inline-flex;
+}
+.sonata-ba-list-field-actions .btn-group .btn + .btn {
+    margin-left: 8px;
+}
+
+.sonata-ba-list-field-date {
+    white-space: nowrap;
+}
+
+.sonata-ba-list-field-etat i {
+    font-size: 16px;
+    text-shadow: 0px 0px 2px #000, 0px 0px 10px #6b6b6b;
+}
+.sonata-ba-list-field-etat i.color-orange {
+    color: #e67e22;
+}
+.sonata-ba-list-field-etat i.color-red {
+    color: #e74c3c;
+}
+.sonata-ba-list-field-etat i.color-green {
+    color: #72c02c;
+}
+.sonata-ba-list-field-etat i.color-blue {
+    color: #4765a0;
+}
+.sonata-ba-list-field-etat i.color-sea {
+    color: #1abc9c;
+}

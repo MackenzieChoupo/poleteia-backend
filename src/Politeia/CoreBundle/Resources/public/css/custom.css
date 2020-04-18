@@ -1,0 +1,217 @@
+body .parallax {
+  padding-bottom: 50px;
+  margin-top: 50px;
+  background-color: #eeeeee;
+}
+body .parallax.parallax-red {
+  background: url(/bundles/politeiacore/img/bg-4.png) no-repeat;
+}
+body .parallax.parallax-red h2,
+body .parallax.parallax-red p {
+  color: #FFFFFF;
+}
+body .parallax.parallax-blue {
+  background: url(/bundles/politeiacore/img/bg-header-2.png) no-repeat;
+}
+body .parallax.parallax-blue h2,
+body .parallax.parallax-blue p {
+  color: #FFFFFF;
+}
+body .parallax.parallax-blue .page-header:after {
+  background: #e30013;
+}
+body .padding-top,
+body padding-bottom,
+body padding-left,
+body padding-right {
+  position: relative;
+}
+body .padding-top-5 {
+  padding-top: 5px;
+}
+body .padding-top-10 {
+  padding-top: 10px;
+}
+body .padding-top-15 {
+  padding-top: 15px;
+}
+body .padding-top-20 {
+  padding-top: 20px;
+}
+body .padding-top-25 {
+  padding-top: 25px;
+}
+body .padding-top-30 {
+  padding-top: 30px;
+}
+body .padding-top-35 {
+  padding-top: 35px;
+}
+body .padding-top-40 {
+  padding-top: 40px;
+}
+body .padding-top-45 {
+  padding-top: 45px;
+}
+body .padding-top-50 {
+  padding-top: 50px;
+}
+body .padding-top-55 {
+  padding-top: 55px;
+}
+body .padding-top-60 {
+  padding-top: 60px;
+}
+body .padding-top-100 {
+  padding-top: 100px;
+}
+body .padding-bottom-5 {
+  padding-bottom: 5px;
+}
+body .padding-bottom-10 {
+  padding-bottom: 10px;
+}
+body .padding-bottom-15 {
+  padding-bottom: 15px;
+}
+body .padding-bottom-20 {
+  padding-bottom: 20px;
+}
+body .padding-bottom-25 {
+  padding-bottom: 25px;
+}
+body .padding-bottom-30 {
+  padding-bottom: 30px;
+}
+body .padding-bottom-35 {
+  padding-bottom: 35px;
+}
+body .padding-bottom-40 {
+  padding-bottom: 40px;
+}
+body .padding-bottom-45 {
+  padding-bottom: 45px;
+}
+body .padding-bottom-50 {
+  padding-bottom: 50px;
+}
+body .padding-bottom-55 {
+  padding-bottom: 55px;
+}
+body .padding-bottom-60 {
+  padding-bottom: 60px;
+}
+body .padding-bottom-100 {
+  padding-bottom: 100px;
+}
+body .padding-left-5 {
+  padding-left: 5px;
+}
+body .padding-left-10 {
+  padding-left: 10px;
+}
+body .padding-left-15 {
+  padding-left: 15px;
+}
+body .padding-left-20 {
+  padding-left: 20px;
+}
+body .padding-left-25 {
+  padding-left: 25px;
+}
+body .padding-left-30 {
+  padding-left: 30px;
+}
+body .padding-left-35 {
+  padding-left: 35px;
+}
+body .padding-left-40 {
+  padding-left: 40px;
+}
+body .padding-left-45 {
+  padding-left: 45px;
+}
+body .padding-left-50 {
+  padding-left: 50px;
+}
+body .padding-left-55 {
+  padding-left: 55px;
+}
+body .padding-left-60 {
+  padding-left: 60px;
+}
+body .padding-left-100 {
+  padding-left: 100px;
+}
+body .padding-right-5 {
+  padding-right: 5px;
+}
+body .padding-right-10 {
+  padding-right: 10px;
+}
+body .padding-right-15 {
+  padding-right: 15px;
+}
+body .padding-right-20 {
+  padding-right: 20px;
+}
+body .padding-right-25 {
+  padding-right: 25px;
+}
+body .padding-right-30 {
+  padding-right: 30px;
+}
+body .padding-right-35 {
+  padding-right: 35px;
+}
+body .padding-right-40 {
+  padding-right: 40px;
+}
+body .padding-right-45 {
+  padding-right: 45px;
+}
+body .padding-right-50 {
+  padding-right: 50px;
+}
+body .padding-right-55 {
+  padding-right: 55px;
+}
+body .padding-right-60 {
+  padding-right: 60px;
+}
+body .padding-right-100 {
+  padding-right: 100px;
+}
+body .form-control {
+  color: #555555;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  /*border: 2px solid transparent;*/
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  min-height: 50px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+body .btn-form-submit {
+  border-radius: 5px;
+  margin: 0;
+  padding: 14px 24px;
+  width: 100%;
+}
+body .user-form .form-control ~ span.help-block {
+  margin-top: -28px;
+  font-size: 13px;
+  line-height: 15px;
+}
+body .user-form .has-error .help-block {
+  color: #ee4343;
+}
+body .tarif-disponible-store > a {
+  display: inline-block;
+}
+body .tarif-disponible-store > a > img {
+  width: 80%;
+}
+/*# sourceMappingURL=custom.css.map */

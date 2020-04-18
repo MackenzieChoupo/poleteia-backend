@@ -1,0 +1,130 @@
+services:
+    
+    politeia_core.admin.mairie:
+        class: Politeia\CoreBundle\Admin\MairieAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.mairie.group, label: politeia_core.admin.mairie.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\Mairie
+            - PoliteiaCoreBundle:Admin\MairieAdmin
+            - @kreatys_user.repository.user
+            - @fos_user.user_manager
+            - @fos_user.mailer
+            - @fos_user.util.token_generator
+              
+    politeia_core.admin.mairie_horaire:
+        class: Politeia\CoreBundle\Admin\MairieHoraireAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.mairie.group, label: politeia_core.admin.mairie_horaire.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\MairieHoraire
+            - PoliteiaCoreBundle:Admin\MairieHoraireAdmin            
+            
+    politeia_core.admin.news:
+        class: Politeia\CoreBundle\Admin\NewsAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.news.group, label: politeia_core.admin.news.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\News
+            - PoliteiaCoreBundle:Admin\NewsAdmin
+            
+    politeia_core.admin.alerte_pcs:
+        class: Politeia\CoreBundle\Admin\AlertePcsAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.news.group, label: politeia_core.admin.alerte_pcs.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\AlertePcs
+            - PoliteiaCoreBundle:Admin\AlertePcsAdmin
+            - @politeia_core.repository.citoyen
+            - @service_container
+
+
+
+    politeia_core.admin.signalement:
+        class: Politeia\CoreBundle\Admin\SignalementAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.signalement.group, label: politeia_core.admin.signalement.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\Signalement
+            - PoliteiaCoreBundle:Admin\SignalementAdmin
+
+    politeia_core.admin.signalement_moderate:
+        class: Politeia\CoreBundle\Admin\SignalementModerateAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.signalement.group, label: politeia_core.admin.signalement_moderate.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\Signalement
+            - PoliteiaCoreBundle:Admin\SignalementModerateAdmin
+            - false
+
+
+    politeia_core.admin.planning:
+        class: Politeia\CoreBundle\Admin\PlanningAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.mairie.group, label: politeia_core.admin.planning.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\Planning
+            - PoliteiaCoreBundle:Admin\PlanningAdmin
+            
+#    politeia_core.admin.boite_a_idee_theme:
+#        class: Politeia\CoreBundle\Admin\BoiteAIdeeThemeAdmin
+#        tags:
+#            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.boite_a_idee.group, label: politeia_core.admin.boite_a_idee_theme.label }
+#        arguments:
+#            - null
+#            - Politeia\CoreBundle\Entity\BoiteAIdeeTheme
+#            - PoliteiaCoreBundle:Admin\BoiteAIdeeThemeAdmin
+            
+    politeia_core.admin.boite_a_idee_question:
+        class: Politeia\CoreBundle\Admin\BoiteAIdeeQuestionAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.boite_a_idee.group, label: politeia_core.admin.boite_a_idee_question.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\BoiteAIdeeQuestion
+            - PoliteiaCoreBundle:Admin\BoiteAIdeeQuestionAdmin
+            
+    politeia_core.admin.boite_a_idee_reponse:
+        class: Politeia\CoreBundle\Admin\BoiteAIdeeReponseAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.boite_a_idee.group, label: politeia_core.admin.boite_a_idee_reponse.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\BoiteAIdeeReponse
+            - PoliteiaCoreBundle:Admin\BoiteAIdeeReponseAdmin
+            
+    politeia_core.admin.sondage:
+        class: Politeia\CoreBundle\Admin\SondageAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.sondage.group, label: politeia_core.admin.sondage.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\Sondage
+            - PoliteiaCoreBundle:Admin\SondageAdmin
+            - @politeia_core.repository.sondage
+            
+    politeia_core.admin.sondage_choix:
+        class: Politeia\CoreBundle\Admin\SondageChoixAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.sondage.group, label: politeia_core.admin.sondage_choix.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\SondageChoix
+            - PoliteiaCoreBundle:Admin\SondageChoixAdmin
+            
+    politeia_core.admin.publicite:
+        class: Politeia\CoreBundle\Admin\PubliciteAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: politeia_core.admin.publicite.group, label: politeia_core.admin.publicite.label }
+        arguments:
+            - null
+            - Politeia\CoreBundle\Entity\Publicite
+            - PoliteiaCoreBundle:Admin\PubliciteAdmin
+        

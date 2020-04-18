@@ -1,0 +1,87 @@
+sonata_admin:
+    dashboard:
+        blocks:
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    code:  kreatys_cms.admin.page    # admin code - service id
+                    icon:  fa-magic                  # font awesome icon
+                    text:  Pages éditées
+                    color: bg-yellow                 # colors: bg-yellow, bg-green, bg-red and bg-aqua
+                    filters:                         # filter values
+                        edited: { value: 1 }
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    code:  sonata.user.admin.user               # admin code - service id
+                    icon:  fa-users                  # font awesome icon
+                    text:  Utilisateurs
+                    color: bg-green                 # colors: bg-yellow, bg-green, bg-red and bg-aqua
+                    filters:                         # filter values
+#                        enabled: { value: 1 }
+#                        profil__type: { value: 1}                
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    code:  sonata.media.admin.media    # admin code - service id
+                    icon:  fa-picture-o                  # font awesome icon
+                    text:  Médias
+                    color: bg-red                   # colors: bg-yellow, bg-green, bg-red and bg-aqua
+#                    filters:                         # filter values
+#                        enabled: { value: 1 }
+            
+
+
+#            -
+#                position: right
+#                type: sonata.block.service.text
+#                settings:
+#                    content: >
+#                        <div class="panel panel-default">
+#                        <div class="panel-heading"><h3 class="panel-title">Bienvenue sur l'administration</h3></div>
+#                        <div class="panel-body">
+#                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> <br /> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+#                        </div>
+#                        </div>
+#            -
+#                position: left
+#                type: sonata.admin.block.admin_list
+#                settings:
+#                    groups: [kreatys_cms.admin.group.content,sonata_media]
+#            -
+#                position: left
+#                type: sonata.admin.block.admin_list
+#                settings:
+#                    groups: [sonata_user,kreatys_tfreelances.admin.group.categorie_metier,kreatys_tfreelances.admin.group.abonnement,kreatys_avis.admin.group.avis]
+                    
+        groups:
+            kreatys_cms.admin.group.content:
+                label: "kreatys_cms.admin.group.content"
+                icon: '<i class="fa fa-file-text-o"></i>'
+                items: 
+                    - kreatys_cms.admin.page
+                    - kreatys_cms.admin.menu
+            sonata_media:
+                label: "sonata_media"
+                icon: '<i class="fa fa-picture-o"></i>'
+                items: ~
+            sonata_user:
+                label: "sonata_user"
+                icon: '<i class="fa fa-users"></i>'
+                items:
+                    - sonata.user.admin.user
+                    
+            kreatys_cms.admin.parametres.group:
+                label: "kreatys_cms.admin.parametres.group"
+                icon: '<i class="fa fa-cogs"></i>'
+                items: 
+                    - kreatys_cms.admin.parametres
+
+                    
+            

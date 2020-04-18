@@ -1,0 +1,28 @@
+
+{% block block_choice_type_widget %}
+    <div class="row choice-type">
+        {% set boucle = 0 %}
+        {% for group,options in form.vars.choices %}
+            {% set boucle = boucle + 1 %}
+            <div class="col-md-3">
+                <label class="control-label">{{ group|humanize }}</label>
+                {% for option in options.choices %}
+                    {% set checked = (option.value == form.vars.data) ? true:false %}
+                    <ul class="list-unstyled">
+                        <li>
+                            <label class="">
+                                <input type="radio" name="{{ form.vars.full_name }}" value="{{ option.value }}"{% for attrname, attrvalue in form.vars.attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}{% if checked %} checked="checked"{% endif %} />
+                                <span>{{ option.label }}</span>
+                            </label>
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+            {% if boucle == 4 %}
+                {% set boucle = 0 %}
+            </div>
+            <div class="row choice-type">
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

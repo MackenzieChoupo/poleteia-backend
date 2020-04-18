@@ -1,0 +1,43 @@
+/* 
+    Created on : 27 oct. 2017, 12:05:10
+    Author     : remi
+*/
+body {
+  padding-top: 36px;
+}
+body .preprod {
+  position: fixed;
+  z-index: 9999999999999999999999999999;
+  background-color: #d01337;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 3px 30px 0px 30px;
+  font-size: 20px;
+  font-weight: 600;
+  left: 0;
+  right: 0;
+  height: 36px;
+  top: 0;
+  text-shadow: 1px 1px 1px #000;
+}
+body .preprod > i {
+  margin: 0 20px;
+  font-size: 26px;
+  vertical-align: middle;
+}
+body.fixed {
+  padding-top: 0;
+}
+body.fixed > .header {
+  top: 36px;
+}
+body.fixed .left-side {
+  top: 89px;
+}
+body.fixed .wrapper {
+  margin-top: 89px;
+}
+body.fixed.skin-black .right-side > .content-header {
+  top: 89px;
+}
+/*# sourceMappingURL=preprod.css.map */

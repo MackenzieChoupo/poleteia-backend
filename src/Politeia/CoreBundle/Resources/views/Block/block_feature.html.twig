@@ -1,0 +1,45 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+
+    {% if front %}
+        {% if contents.dispo == 'service' %}
+            <div class="service">
+                <div class="service-icon">
+                    <i class="fa fa-{{ contents.icon }}"></i>
+                </div>
+                <h5 class="service-title">{{ contents.titre }}</h5>
+                <p>{{ contents.text }}</p>
+            </div>
+        {% elseif contents.dispo == 'feature-left' %}
+            <div class="features-left">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fa fa-{{ contents.icon }}"></i>
+                    </div>
+                    <h5>{{ contents.titre }}</h5>
+                    <p>{{ contents.text }}</p>
+                </div>
+            </div>
+        {% elseif contents.dispo == 'feature-right' %}
+            <div class="features-right">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fa fa-{{ contents.icon }}"></i>
+                    </div>
+                    <h5>{{ contents.titre }}</h5>
+                    <p>{{ contents.text }}</p>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <a href="#" onclick="blockEditContents({{ kblock.id }})" data-toggle="tooltip" data-placement="top" title="Cliquer pour modifier le contenu" style="display:block;">
+            <p><i class="fa fa-{{ contents.icon is defined ? contents.icon|raw:'map' }}"></i></p>
+            <h4>{{ contents.titre is defined ? contents.titre|raw:'Titre' }}</h4>
+            <p>{{ contents.text is defined ? contents.text|raw:'Texte' }}</p>
+        </a>
+    {% endif %}
+
+{% endblock %}
+

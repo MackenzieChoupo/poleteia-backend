@@ -1,0 +1,38 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% set link = false %}
+{% set linkTo = '' %}
+{% set class = settings.color %}
+{% if contents.lien_page is defined and contents.lien_page is not null and contents.lien_page != '' %}
+    {% set link = path(contents.lien_page) %}
+    {% set linkTo = 'une page' %}
+{% elseif contents.lien_ancre is defined and contents.lien_ancre is not null and contents.lien_ancre != '' %}
+    {% set link = contents.lien_ancre %}
+    {% set linkTo = 'une ancre' %}
+    {% set class = class ~ ' page-scroll' %}
+{% elseif contents.lien_autre is defined and contents.lien_autre is not null and contents.lien_autre != '' %}
+    {% set link = contents.lien_autre %}
+    {% set linkTo = 'une url' %}
+{% endif %}
+
+{% block block %}
+    {% if front %}
+        <div class="{{ settings.padding_top }} {{ settings.padding_bottom }}">
+            <a href="{{ link }}" class="{{ class }}">{{ contents.label }}</a>
+        </div>
+
+        {#                    <div class="{{ settings.text_align }}">#}
+    {% else %}
+        <a href="#" onclick="blockEditContents({{ kblock.id }})" data-toggle="tooltip" data-placement="top" title="Cliquer pour changer/modifier les valeurs du bouton">
+            <ul>
+                <li><strong>Label :</strong> {{ contents.label }}</li>
+                <li><strong>Lien vers :</strong> {{ linkTo }}</li>
+                <li><strong>Lien :</strong> {{ link }}</li>
+            </ul>
+        </a>
+    {% endif %}
+
+    {#            <h2{% if not front %} class="title-editable" data-id="{{ kblock.id }}" data-field="titre"{% endif %}>{{ contents.titre|raw }}</h2>#}
+
+{% endblock %}

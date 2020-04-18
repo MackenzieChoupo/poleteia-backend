@@ -1,0 +1,51 @@
+{% block read_only_etat_widget %}
+{% spaceless %}
+    <p class="bg-info padding-top-5 padding-bottom-5 padding-left-10 padding-right-10">
+        <span class="text-info">{{ form.vars.choices[form.vars.value] }}</span>
+    </p>
+{% endspaceless %}
+{% endblock read_only_etat_widget %}
+
+{% block text_infos_widget %}
+    <p class="padding-top-5 padding-bottom-5 padding-left-10 padding-right-10">
+        {{ form.vars.value|raw }}
+    </p>
+{% endblock text_infos_widget %}
+
+
+{% block image_file_widget %}
+    {% if form.vars.value %}
+    <p class="padding-top-5 padding-bottom-5 padding-left-10 padding-right-10">
+        <img src="/uploads/{{ form.vars.dir }}/{{ form.vars.value }}" width="200" >        
+    </p>
+    {% endif %}
+{% endblock image_file_widget %}
+
+{% block pdf_file_widget %}
+    {% if form.vars.value %}
+    <p class="padding-top-5 padding-bottom-5 padding-left-10 padding-right-10">
+        <a href="/uploads/planning/{{ form.vars.value }}" target="_blank"><i class="fa fa-download"></i> Fichier PDF</a>      
+    </p>
+    {% endif %}
+{% endblock pdf_file_widget %}
+
+{% block photo_news_file_widget %}
+    {% if form.vars.value %}
+    <p class="padding-top-5 padding-bottom-5 padding-left-10 padding-right-10">
+        <img src="/uploads/news/{{ form.vars.value }}" width="200" >        
+    </p>
+    {% endif %}
+{% endblock photo_news_file_widget %}
+
+{% block photo_signalement_file_widget %}
+    {% if form.vars.value %}
+    <label class="control-label">Photo</label>
+    <p class="padding-top-5 padding-bottom-5">
+        <a href="/uploads/signalement/{{ form.vars.value }}" target="_blank"><img src="/uploads/signalement/{{ form.vars.value }}" width="200" ></a>
+    </p>
+    <p>
+        <a href="{{ path('admin_politeia_core_signalement_deletePhoto', {'id': form.parent.vars.value.id}) }}" class="btn btn-xs btn-danger" onclick="return confirm('Etes vous sûr de vouloir supprimer cette photo ?')">Supprimer la photo</a>
+    </p>
+    
+    {% endif %}
+{% endblock photo_signalement_file_widget %}

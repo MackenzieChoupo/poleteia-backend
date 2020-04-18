@@ -1,0 +1,25 @@
+{% if page is defined and (page.viewTitle or page.breadcrumb) %}    
+    {% set nb = page.initFilAriane %}
+    {% set ptitle = page.filAriane[nb - 1].title %}    
+    <div class="breadcrumbs">
+        <div class="container">
+            {% if page.viewTitle %}
+                <h1 class="pull-left">{% block pageTitle %}{{ ptitle }}{% endblock %}</h1>
+            {% endif %}
+            {% if page.breadcrumb %}
+                <ul class="pull-right breadcrumb">
+                    {% for fil in page.filAriane %}
+                        {% if fil.title != ptitle %}
+                            {% if fil.enabled and fil.breadcrumbLink %}
+                                <li><a href="{{ path(fil.route) }}">{{ fil.title }}</a></li>
+                                {% else %}
+                                <li>{{ fil.title }}</li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    <li class="active">{% block breadcrumbActive %}{{ ptitle }}{% endblock %}</li>
+                </ul>
+            {% endif %}
+        </div><!--/container-->
+    </div>
+{% endif %}

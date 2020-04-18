@@ -1,0 +1,103 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends base_template %}
+
+{% block title %}{{ 'title_dashboard'|trans({}, 'SonataAdminBundle') }}{% endblock%}
+{% block breadcrumb %}{% endblock %}
+{% block content %}
+
+    {{ sonata_block_render_event('sonata.admin.dashboard.top', { 'admin_pool': admin_pool }) }}
+    
+    {% set blockTops = [] %}
+    {% for block in blocks.top %}
+        {% if is_granted(block.settings.role) %}
+            {% set blockTops = blockTops|merge([block]) %}
+        {% endif %}
+    {% endfor %}    
+    
+    {% set blockCenters = [] %}
+    {% for block in blocks.center %}
+        {% if is_granted(block.settings.role) %}
+            {% set blockCenters = blockCenters|merge([block]) %}
+        {% endif %}
+    {% endfor %}  
+    
+    {% set blockLefts = [] %}
+    {% for block in blocks.left %}
+        {% if is_granted(block.settings.role) %}
+            {% set blockLefts = blockLefts|merge([block]) %}
+        {% endif %}
+    {% endfor %}  
+    
+    {% set blockRights = [] %}
+    {% for block in blocks.right %}
+        {% if is_granted(block.settings.role) %}
+            {% set blockRights = blockRights|merge([block]) %}
+        {% endif %}
+    {% endfor %}  
+    
+    {% set blockBottoms = [] %}
+    {% for block in blocks.bottom %}
+        {% if is_granted(block.settings.role) %}
+            {% set blockBottoms = blockBottoms|merge([block]) %}
+        {% endif %}
+    {% endfor %}  
+    
+    {% if blockTops|length > 0 %}
+        <div class="row">
+            {% for block in blockTops %}
+                <div class="{{ block.class }}">
+                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="row">
+        {% set has_center = false %}
+
+        <div class="{% if blockCenters|length > 0 %}col-md-4{% else %}col-md-6{% endif %}">
+            {% for block in blockLefts %}
+                {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
+            {% endfor %}
+        </div>
+
+        {% if blockCenters|length > 0 %}
+            <div class="col-md-4">
+                {% for block in blockCenters%}
+                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="{% if blockCenters|length > 0 %}col-md-4{% else %}col-md-6{% endif %}">
+            {% for block in blockRights %}
+                {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if blockBottoms|length > 0 %}
+        <div class="row">
+            {% for block in blockBottoms %}
+                <div class="{{ block.class }}">
+                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+
+    {{ sonata_block_render_event('sonata.admin.dashboard.bottom', { 'admin_pool': admin_pool }) }}
+
+{% endblock %}

@@ -1,0 +1,7 @@
+<div class="" style="position: relative;">
+    <ul class="bxslider">
+        {% for img in contents.gallery.galleryHasMedias %}
+            <li>{% media img.media, contents.gallery.defaultFormat with {'class': 'img-responsive'} %}</li>
+        {% endfor %}
+    </ul>
+</div>

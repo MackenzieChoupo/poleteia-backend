@@ -1,0 +1,12 @@
+Dashboard: Tableau de bord
+stats_view_more: Plus d'info
+sonata_user: Utilisateurs
+sonata_media: Médiatheque
+
+kreatys_cms:
+    admin:
+        group:
+            content: Pages / Contenus / Menu
+            slideshow: Slideshow / Carousel
+        parametres:
+            group: Configuration

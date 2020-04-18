@@ -1,0 +1,90 @@
+{% extends 'KreatysCmsBundle:Admin:base_compose.html.twig' %}
+
+
+{% block content %}
+
+    <div class="box box-primary">
+
+        <div class="box-header">
+            <h4 class="box-title">Composez votre page...</h4>
+            
+            <div class="pull-right" style="margin-top: 10px; margin-right: 20px;">
+                {{ sonata_block_render({ 'type': 'sonata_translation.block.locale_switcher' }, {
+                    'object': object,
+                    'admin': admin               
+                }) }}
+            </div>
+        </div>
+
+        <div class="box-body">
+            <div class="compose-box">
+                <div class="compose-box-header compose-box-block"><div class="compose-block-name">header</div></div>
+                <div class="compose-box-content compose-box-block row">
+                    <div class="compose-block-name">content</div>
+                    <div class="compose-block-btn">
+                        <button id="compose_add_block" data-page-id='{{ object.id }}' type="button" class="btn-u btn-sm" data-toggle="tooltip" data-placement="left" title="Ajouter un bloc"><i class="fa fa-plus"></i></button>
+                    </div>
+                    
+                    {{ kcms_render_block(object.masterBlock, false) }}
+               
+                </div>
+                <div class="compose-box-footer compose-box-block"><div class="compose-block-name">footer</div></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div aria-hidden="true" role="dialog" tabindex="-1" id="modalBlockCreate" class="modal fade compose-modal" style="display: none;">          
+        <div class="modal-dialog modal-lg">			
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Ajouter un bloc</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <button name="btn_create" class="btn btn-success" type="button" onclick="$('#modalBlockCreate form').submit();"><i class="fa fa-plus-circle"></i> Créer</button>
+                </div>	
+            </div>
+        </div>
+    </div>
+
+    <div aria-hidden="true" role="dialog" tabindex="-1" id="modalBlockEdit" class="modal fade compose-modal" style="display: none;">          
+        <div class="modal-dialog modal-sm">			
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Editer les paramètres du bloc</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <button name="btn_update" class="btn btn-success" type="button"><i class="fa fa-save"></i> Valider</button>
+                </div>	
+            </div>
+        </div>
+    </div>
+                
+                
+                <div aria-hidden="true" role="dialog" tabindex="-1" id="modalEditContents" class="modal fade compose-modal" style="display: none;">          
+        <div class="modal-dialog">			
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Modifier</h4>
+                </div>
+                <div class="modal-body">                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <button name="btn_update" class="btn btn-success" type="button"><i class="fa fa-save"></i> Valider</button>
+                </div>	
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

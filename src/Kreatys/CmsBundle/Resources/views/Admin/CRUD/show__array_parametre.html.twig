@@ -1,0 +1,8 @@
+
+{% for key, parametre in value %}
+    <th style="text-transform: capitalize;">{{ parametre.key }}</th>
+    <td>{{ parametre.value }}</td>
+    {% if loop.index < value|length %}
+    </tr><tr>
+    {% endif %}
+{% endfor %}

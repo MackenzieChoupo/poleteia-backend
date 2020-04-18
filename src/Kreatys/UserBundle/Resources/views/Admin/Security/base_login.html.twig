@@ -1,0 +1,74 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Identification{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        'bundles/sonataadmin/vendor/bootstrap/dist/css/bootstrap.min.css'
+        'bundles/sonataadmin/vendor/AdminLTE/css/font-awesome.min.css'
+        'bundles/sonataadmin/vendor/AdminLTE/css/ionicons.min.css'
+        'bundles/sonataadmin/vendor/AdminLTE/css/AdminLTE.css'
+        'bundles/sonataadmin/vendor/AdminLTE/css/iCheck/flat/flat.css'
+        'bundles/sonataadmin/vendor/jqueryui/themes/base/jquery-ui.css'
+        'bundles/sonataadmin/css/styles.css'
+        'bundles/sonataadmin/css/layout.css'        
+        'bundles/kreatysadmin/css/login.css'
+        output='css/admin_login.css'
+        filter='?yui_css,cssrewrite'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+
+        <header class="main-header">
+            <noscript>
+            &lt;div class="noscript-warning"&gt;
+            Javascript is disabled in your web browser. Some features will not work properly.
+            &lt;/div&gt;
+            </noscript>
+        </header>
+
+
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="/">
+                    <span><img src="{{ asset('bundles/politeiacore/img/logo.png') }}" class="img-responsive" style="max-width: 230px;display:inline-block;" /></span>
+                </a>
+            </div>
+            <div class="login-box-body">
+                <div>
+                    <p class="login-box-msg">Identification</p>
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+        'bundles/sonataadmin/vendor/jquery/dist/jquery.min.js'
+        'bundles/sonataadmin/vendor/bootstrap/dist/js/bootstrap.min.js'
+        'bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js'
+        'bundles/sonataadmin/App.js'
+        'bundles/sonataadmin/Admin.js'
+        output='js/admin_login.js'
+        filter='?yui_js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+{% endblock %}

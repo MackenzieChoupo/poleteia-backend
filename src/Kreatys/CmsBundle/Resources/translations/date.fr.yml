@@ -1,0 +1,8 @@
+diff:
+    ago:
+        second: il y a 1 seconde|il y a %count% secondes
+        minute: il y a 1 minute|il y a %count% minutes
+        hour: il y a 1 heure|il y a %count% heures
+        day: il y a 1 jour|il y a %count% jours
+        month: il y a %count% mois
+        year: il y a 1 an|il y a %count% ans

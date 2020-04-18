@@ -1,0 +1,14 @@
+{% extends base_layout %}
+
+{% block title %}{{ page.metaTitle ? page.metaTitle:params.seo.metaTitle }}{% endblock %}
+
+{% block metas %}
+    {{ parent() }}
+    <meta name="description" content="{{ page.metaDescription ? page.metaDescription|raw:params.seo.metaDescription }}">
+    <meta name="keywords" content="{{ page.metaKeywords ? page.metaKeywords|raw:params.seo.metaKeywords }}">
+{% endblock %}
+
+{% block content %}
+    {{ page.contentHtml ? page.contentHtml|raw:parent() }}
+{% endblock %}
+

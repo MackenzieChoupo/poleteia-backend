@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block tab_menu %}
+    {% include 'KreatysCmsBundle:Admin:Page/tab_menu.html.twig' with {
+        'action':      action,
+        'admin':       admin,
+        'currentSite': 'TFreelances',
+    } only %}
+{% endblock %}

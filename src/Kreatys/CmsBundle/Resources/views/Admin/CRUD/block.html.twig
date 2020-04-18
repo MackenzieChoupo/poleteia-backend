@@ -1,0 +1,30 @@
+{% extends 'SonataAdminBundle:Form:form_admin_fields.html.twig' %}
+{% block sonata_type_immutable_array_widget_row %}
+    {% spaceless %}
+        <div class="form-group{% if errors|length > 0%} error{%endif%}" id="sonata-ba-field-container-{{ id }}-{{ key }}">
+            {# dump(child) #}
+            {{ form_label(child) }}
+
+            {% set div_class = "" %}
+            {% if sonata_admin.admin and sonata_admin.admin.getConfigurationPool().getOption('form_type') == 'horizontal' %}
+                {% set div_class = "col-sm-9 col-md-9" %}
+            {% endif%}
+
+            <div class="{{ div_class }} sonata-ba-field sonata-ba-field-{{ sonata_admin.edit }}-{{ sonata_admin.inline }} {% if errors|length > 0 %}sonata-ba-field-error{% endif %}">
+                {{ form_widget(child, {'horizontal': false, 'horizontal_input_wrapper_class': ''}) }} {# {'horizontal': false, 'horizontal_input_wrapper_class': ''} needed to avoid MopaBootstrapBundle messing with the DOM #}
+            </div>            
+            
+            {% if child.vars.help_block %}
+                <div class="help-block">
+                    {{ child.vars.help_block }}
+                </div>
+            {% endif %}
+            
+            {% if child.vars.errors|length > 0 %}
+                <div class="help-block sonata-ba-field-error-messages">
+                    {{ form_errors(child) }}
+                </div>
+            {% endif %}
+        </div>
+    {% endspaceless %}
+{% endblock %}

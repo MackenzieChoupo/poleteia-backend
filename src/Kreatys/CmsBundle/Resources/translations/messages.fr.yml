@@ -1,0 +1,57 @@
+"contient": contient
+"ne contient pas": ne contient pas
+"est égal à": est égal à
+Block: Blocs
+"Block List": Liste des blocs
+"Est égal à": Est égal à
+"Ne contient pas": Ne contient pas
+sonata.media.provider.image: Image
+"Parametre List": Paramètres
+
+"Clé": Clé
+"Valeur": Valeur
+
+kreatys_cms:
+    admin:
+        parametres:
+            label: Paramètres
+            
+            form:
+                tab:
+                    general: Paramètres
+                    seo: SEO
+                    autre: + de paramètres
+                    admin: Administration
+                titre:
+                    general: Paramètres du site
+                    seo: Paramètres par défaut pour le référencement
+                    autre: Ajouter des paramètres
+                    theme: Thèmes
+            
+            label: Label
+            logo: Logo
+            logo_footer:
+                label: Logo (footer)
+                help: Laisser vide si même que "logo"
+            autres: Autres paramètres
+            theme_color:
+                label: Couleur
+                default: Par défaut
+                blue: Bleu
+                red: Rouge
+                orange: Orange
+                teal: Vert
+            
+            show:
+                titre:
+                    general: Paramètres du site
+                    seo: SEO - Paramètres par défaut pour le référencement
+                    autres: Paramètres supplémentaires
+                    admin: Administration
+            
+            seo:
+                meta_title: Meta titre
+                meta_keywords: Meta keywords
+                meta_description: Meta description
+                footer: Texte pied de page
+                googleAnalitics: Google Analitics

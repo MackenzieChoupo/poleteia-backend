@@ -1,0 +1,66 @@
+
+services:
+    
+    kreatys_cms.admin.page:
+        class: Kreatys\CmsBundle\Admin\PageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "kreatys_cms.admin.group.content", label: "Pages" }
+        arguments:
+            - ~
+            - Kreatys\CmsBundle\Entity\Page
+            - KreatysCmsBundle:PageAdmin
+        calls:
+            - [ setTranslationDomain, [KreatysCmsBundle] ]
+            - [ setTemplates, [{tree: KreatysCmsBundle:Admin:page_tree_list.html.twig, list: KreatysCmsBundle:Admin:list.html.twig, preview: KreatysCmsBundle:Admin:preview.html.twig, edit: KreatysCmsBundle:Admin:Page/edit.html.twig, compose: KreatysCmsBundle:Admin:compose.html.twig}] ]
+            - [setPageManager, [@kreatys_cms.manager.cms_page]]
+            - [setSecurityContext, [@security.context]]            
+    
+    kreatys_cms.admin.block:
+        class: Kreatys\CmsBundle\Admin\BlockAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: Content, label: Block }
+        arguments:
+            - null
+            - Kreatys\CmsBundle\Entity\Block
+            - KreatysCmsBundle:BlockAdmin
+        calls:
+            - [setBlockManager, [@kreatys_cms.manager.block]]
+            - [setCmsPageManager, [@kreatys_cms.manager.cms_page]]
+            - [setSecurityContext, [@security.context]]
+            - [setLocales, [%sonata_translation.locales%]]
+    
+    kreatys_cms.admin.menu:
+        class: Kreatys\CmsBundle\Admin\MenuAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: Content, label: Menu }
+        arguments:
+            - null
+            - Kreatys\CmsBundle\Entity\Menu
+            - KreatysCmsBundle:MenuAdmin
+        calls:
+            - [ setTranslationDomain, [KreatysCmsBundle] ]
+            - [ setTemplates, [{tree: KreatysCmsBundle:Admin:menu_tree_list.html.twig, list: KreatysCmsBundle:Admin:list.html.twig}] ]
+            - [setMenuManager, [@kreatys_cms.manager.menu]]
+            - [setSecurityContext, [@security.context]]
+            
+    kreatys_cms.admin.parametres:
+        class: Kreatys\CmsBundle\Admin\ParametreAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: kreatys_cms.admin.parametres.group, label: kreatys_cms.admin.parametres.label }
+        arguments:
+            - null
+            - Kreatys\CmsBundle\Entity\Parametre
+            - KreatysCmsBundle:ParametreAdmin
+        calls:
+            - [ setTranslationDomain, [messages] ]
+
+    kreatys_cms.admin.seo:
+        class: Kreatys\CmsBundle\Admin\SeoAdmin
+        tags:
+            - { name: sonata.admin,  manager_type: orm, group: kreatys_cms.admin.parametres.group, label: kreatys_cms.admin.parametres.label }
+        arguments:
+            - null
+            - Kreatys\CmsBundle\Entity\Seo
+            - KreatysCmsBundle:SeoAdmin
+        calls:
+            - [ setTranslationDomain, [messages] ]

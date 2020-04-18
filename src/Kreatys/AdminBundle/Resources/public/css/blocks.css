@@ -1,0 +1,60 @@
+/* 
+    Created on : 9 févr. 2016, 14:48:36
+    Author     : remi
+*/
+
+
+/* *************************** */
+/* ***** BLOCK ICON TEXT ***** */
+.block-icon-text .service {
+    overflow: hidden;
+    margin-bottom: 10px;
+    padding: 15px 15px 10px;
+}
+.block-icon-text .service .service-icon {
+    float: left;
+    padding: 10px;
+    font-size: 35px;
+    text-align: center;
+    cursor: pointer;
+}
+.block-icon-text .service .desc {
+    padding: 0 15px;
+    overflow: hidden;
+}
+.block-icon-text .service .desc h4 {
+    font-size: 22px;
+    line-height: 25px;
+}
+
+
+/* *************************** */
+/* ***** BLOCK LIST ICON ***** */
+div[id$="settings-list"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+div[id$="settings-list"] .sonata-collection-row {
+    border-bottom: 1px solid #ddd;
+    margin-top: 15px;
+}
+div[id$="settings-list"] .sonata-collection-row:first-child {
+    margin-top: 0;
+}
+div[id$="settings-list"] .sonata-collection-row .form-group {
+    margin-right: 40px;
+}
+div[id$="settings-list"] .sonata-collection-row .form-group .form-group {
+    width: 100%;
+    margin-bottom: 2px;
+    margin-right: 0 !important;
+}
+
+.modal div[id$="settings-list"] {
+    margin: 0 -20px;
+    border-color: transparent;
+}
+.modal .box div[id$="settings-list"] {
+    margin: 0;
+    border-color: #ddd;
+}

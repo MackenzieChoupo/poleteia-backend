@@ -1,0 +1,106 @@
+{% extends base_template %}
+
+{% block actions %}
+{% endblock %}
+
+{% block navbar_title %}    
+{% endblock %}
+
+{% block content %}
+    
+    <div class="row">
+        <div class="col-md-6">  
+    
+            <div class="box box-primary">
+
+                <div class="box-header">
+                    <h4 class="box-title">Résultat du sondage : {{ object.question }}</h4>
+                </div>
+
+                <div class="box-body">
+
+                    {% if object.nbReponse > 0 %}
+
+                        <p>Nombre total de votes : {{ object.nbReponse }}</p>
+
+                        <canvas id="cnvs_resultat"></canvas>
+
+                    {% else %}
+                        <p>
+                            <strong>Aucun résultat pour le moment</strong>
+                        </p>
+                    {% endif %}
+
+
+                </div>
+            </div>
+
+       </div>
+    </div>     
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <style type="text/css">
+        
+    </style>
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script src="{{ asset('bundles/politeiacore/admin/plugins/chartjs/chart.min.js') }}"></script>
+    
+    <script type="text/javascript">
+        var ctx;
+        var myGraph;
+        var config;
+        
+        var colors = [
+            '#3366CC',
+            '#DC3912',
+            '#FF9900',
+            '#109618',
+            '#990099',
+            '#3B3EAC',
+            '#0099C6',
+            '#DD4477',
+            '#66AA00',
+            '#B82E2E',
+            '#316395',
+            '#994499',
+            '#22AA99',
+            '#AAAA11',
+            '#6633CC',
+            '#E67300',
+            '#8B0707',
+            '#329262',
+            '#5574A6',
+            '#3B3EAC'
+        ];
+        
+        $(function() {
+            ctx = document.getElementById("cnvs_resultat").getContext("2d");
+            
+            config = {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: [{% for choix in object.choix %}{{ choix.nbVote }}{% if not loop.last %}, {% endif %}{% endfor %}],
+                        backgroundColor: colors
+                    }],
+                    labels: [{% for choix in object.choix %}'{{ choix.texte|replace("'", "\'") }}'{% if not loop.last %}, {% endif %}{% endfor %}]
+                },
+                options: {
+                    
+                }
+            };
+            
+            myGraph = new Chart(ctx, config);            
+        });
+    </script>
+    
+{% endblock %}

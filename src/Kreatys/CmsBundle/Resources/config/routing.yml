@@ -1,0 +1,75 @@
+kreatys_cms_menu_enabled:
+    pattern: /admin/menu/{id}/enabled
+    defaults: { _controller: KreatysCmsBundle:MenuAdmin:enabled, _sonata_admin: kreatys_cms.admin.menu }
+    options:
+        expose: true
+        
+kreatys_cms_pages_enabled:
+    pattern: /admin/pages/{id}/enabled
+    defaults: { _controller: KreatysCmsBundle:PageAdmin:enabled, _sonata_admin: kreatys_cms.admin.page }
+    options:
+        expose: true
+        
+kreatys_cms_blocks_enabled:
+    pattern: /admin/blocks/{id}/enabled
+    defaults: { _controller: KreatysCmsBundle:BlockAdmin:enabled, _sonata_admin: kreatys_cms.admin.block }
+    options:
+        expose: true
+        
+kreatys_cms_blocks_reorder:
+    pattern: /admin/blocks/{id}/reorder/{siblingId}/{pos}
+    defaults: { _controller: KreatysCmsBundle:BlockAdmin:reorder, _sonata_admin: kreatys_cms.admin.block }
+    options:
+        expose: true
+        
+kreatys_cms_icons_render:
+    pattern: /admin/icons/render
+    defaults: { _controller: KreatysCmsBundle:BlockAdmin:renderIcons, _sonata_admin: kreatys_cms.admin.block }
+    options:
+        expose: true
+        
+kreatys_cms_ajax_block_create:
+    pattern: /admin/ajax/blocks/create/{page_id}/{block_id}
+    defaults: { _controller: KreatysCmsBundle:BlockAdmin:createAjax, _sonata_admin: kreatys_cms.admin.block }
+    options:
+        expose: true
+        
+kreatys_cms_ajax_block_edit:
+    pattern: /admin/ajax/blocks/{id}/edit
+    defaults: { _controller: KreatysCmsBundle:BlockAdmin:editAjax, _sonata_admin: kreatys_cms.admin.block }
+    options:
+        expose: true
+        
+kreatys_cms_ajax_block_update:
+    pattern: /admin/ajax/blocks/{id}/update
+    defaults: { _controller: KreatysCmsBundle:BlockAdmin:updateAjax, _sonata_admin: kreatys_cms.admin.block }
+    options:
+        expose: true
+        
+kreatys_cms_ajax_block_delete:
+    pattern: /admin/ajax/blocks/{id}/delete
+    defaults: { _controller: KreatysCmsBundle:BlockAdmin:deleteAjax, _sonata_admin: kreatys_cms.admin.block }
+    options:
+        expose: true
+        
+kreatys_cms_ajax_block_edit_contents:
+    pattern: /admin/ajax/blocks/{id}/editContents
+    defaults: { _controller: KreatysCmsBundle:BlockAdmin:editContentsAjax, _sonata_admin: kreatys_cms.admin.block }
+    options:
+        expose: true
+        
+kreatys_cms_menu_reorder:
+    pattern: /admin/menu/{id}/reorder/{siblingId}/{pos}
+    defaults: { _controller: KreatysCmsBundle:MenuAdmin:reorder, _sonata_admin: kreatys_cms.admin.menu }
+    options:
+        expose: true
+        
+kreatys_cms_ajax_page_list:
+    pattern: /admin/ajax/menu/list
+    defaults: { _controller: KreatysCmsBundle:PageAdmin:listAjax, _sonata_admin: kreatys_cms.admin.page }
+    options:
+        expose: true
+
+kreatys_cms.page:
+    resource: KreatysCmsBundle:Snapshot
+    type: page

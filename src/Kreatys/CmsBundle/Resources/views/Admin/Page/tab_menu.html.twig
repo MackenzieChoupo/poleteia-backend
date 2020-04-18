@@ -1,0 +1,23 @@
+{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}
+
+{% if admin.subject.id %}
+    <ul class="nav navbar-nav">
+        <li class="first">
+            <a href="{{ admin.generateObjectUrl('edit', admin.subject) }}">{{ admin.trans('action_page_edit') }}</a>
+        </li>
+        <li>
+            <a href="{{ admin.generateObjectUrl('compose', admin.subject) }}">{{ admin.trans('action_page_compose') }}</a>
+        </li>
+        <li>
+            <a href="{{ admin.generateObjectUrl('publish', admin.subject) }}">{{ admin.trans('action_page_publish') }}</a>
+        </li>
+        <li>
+            <a href="{{ admin.generateObjectUrl('preview', admin.subject) }}">{{ admin.trans('action_page_preview') }}</a>
+        </li>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <li>
+            <a href="{{ admin.generateObjectUrl('publish_force', admin.subject) }}">{{ admin.trans('action_page_publish_force') }}</a>
+        </li>
+        {% endif %}
+    </ul>
+{% endif %}

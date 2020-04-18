@@ -1,0 +1,66 @@
+fos_user:
+    resource: "fos_user_routing.yml"
+    
+gallery:
+    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+    prefix: /media/gallery
+
+media:
+    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+    prefix: /media
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+    
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+sonata_user:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
+    
+#sonata_cache_cache:
+#    resource: '@SonataCacheBundle/Resources/config/routing/cache.xml'
+#    prefix: /
+
+#sonata_page_exceptions:
+#    resource: '@SonataPageBundle/Resources/config/routing/exceptions.xml'
+#    prefix: /
+
+#sonata_page_cache:
+#    resource: '@SonataPageBundle/Resources/config/routing/cache.xml'
+#    prefix: /
+
+
+
+    
+#routing_i18n:
+#    resource: "routing_i18n.yml"
+#    prefix:   /{_locale}
+#    requirements: { _locale : fr|en }
+#
+#specific_routing_i18n:
+#    resource: "specific_routing_i18n.yml"
+#    type: be_simple_i18n
+#    
+#redirect_lang:
+#    pattern:  /
+#    defaults: { _controller: KreatysYourfreelanceFrontBundle:Front:redirectLang }
+
+kreatys_admin:
+    resource: "@KreatysAdminBundle/Resources/config/routing.yml"
+    prefix: /admin
+    
+kreatys_user:
+    resource: "@KreatysUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+kreatys_cms:
+    resource: "@KreatysCmsBundle/Resources/config/routing.yml"
+    prefix:   /

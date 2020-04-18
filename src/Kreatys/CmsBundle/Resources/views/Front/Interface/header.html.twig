@@ -1,0 +1,23 @@
+
+{% block header %}
+    {% block beforeNavbar %}{% endblock %}
+    <nav class="navbar navbar-default {% block navbarClass %}{% endblock %}">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                {% block menuNonCollapse %}{% endblock %}
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    {% block toggleNavigation %}<span class="fa fa-bars"></span>{% endblock %}
+                </button>
+                <a class="navbar-brand" href="{% block brandUrl %}{{ path('kreatys_cms_home') }}{% endblock %}">{% block brand %}{% if params.logo %}{% media params.logo, 'petite' with {'class': 'img-responsive'} %}{% else %}Kreatys CMS{% endif %}{% endblock %}</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                {% block menu %}{{ knp_menu_render('main', {'ancestorClass': 'active', 'currentAsLink': true, 'currentClass': 'active', 'template': 'KreatysCmsBundle:Front/Menu:knp_menu.html.twig'}) }}{% endblock %}
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>    
+    {% block afterNavbar %}{% endblock %}
+{% endblock %}

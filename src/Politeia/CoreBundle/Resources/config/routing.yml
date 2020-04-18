@@ -1,0 +1,8 @@
+#politeia_core_homepage:
+#    path:     /hello/{name}
+#    defaults: { _controller: PoliteiaCoreBundle:Default:index }
+
+politeia_core_user:
+    resource: "@PoliteiaCoreBundle/Controller/UserController.php"
+    type:     annotation
+    prefix: /user

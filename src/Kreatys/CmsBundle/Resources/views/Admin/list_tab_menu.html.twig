@@ -1,0 +1,10 @@
+{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}
+
+<div class="btn-group" style="padding: 10px 0;">
+    <a type="button" class="btn {% if mode == 'list' %}btn-info active{% else %}btn-default{% endif %}" href="{{ admin.generateUrl('list', { 'filter': { 'name': { 'type': '' } } }) }}">
+        <i class="fa fa-list"></i> Liste
+    </a>
+    <a type="button" class="btn {% if mode == 'tree' %}btn-info active{% else %}btn-default{% endif %}" href="{{ admin.generateUrl('tree') }}">
+        <i class="fa fa-sitemap"></i> Arborescence
+    </a>
+</div>

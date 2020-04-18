@@ -1,0 +1,197 @@
+sonata_admin:
+    dashboard:
+        blocks:
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    role: ROLE_ADMIN
+                    code:  kreatys_cms.admin.page    # admin code - service id
+                    icon:  fa-magic                  # font awesome icon
+                    text:  Pages éditées
+                    color: bg-yellow                 # colors: bg-yellow, bg-green, bg-red and bg-aqua
+                    filters:                         # filter values
+                        edited: { value: 1 }
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    role: ROLE_ADMIN
+                    code:  sonata.user.admin.user               # admin code - service id
+                    icon:  fa-users                  # font awesome icon
+                    text:  Utilisateurs
+                    color: bg-green                 # colors: bg-yellow, bg-green, bg-red and bg-aqua
+                    filters:                         # filter values
+#                        enabled: { value: 1 }
+#                        profil__type: { value: 1}                
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    role: ROLE_ADMIN
+                    code:  sonata.media.admin.media    # admin code - service id
+                    icon:  fa-picture-o                  # font awesome icon
+                    text:  Médias
+                    color: bg-red                   # colors: bg-yellow, bg-green, bg-red and bg-aqua
+#                    filters:                         # filter values
+#                        enabled: { value: 1 }
+
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id                
+                settings:
+                    role: ROLE_MAIRIE
+                    code:  politeia_core.admin.news    # admin code - service id
+                    icon:  fa-home                  # font awesome icon
+                    text:  Actualités en ligne
+                    color: bg-maroon                 # colors: bg-yellow, bg-green, bg-red and bg-aqua
+                    filters:                         # filter values
+                        online: { value: true }
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id                
+                settings:
+                    role: ROLE_MAIRIE
+                    code:  politeia_core.admin.signalement    # admin code - service id
+                    icon:  fa-bullhorn                  # font awesome icon
+                    text:  Nouveau signalements
+                    color: bg-red                 # colors: bg-yellow, bg-green, bg-red and bg-aqua
+                    filters:                         # filter values
+                        etat: { value: 1 }
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id                
+                settings:
+                    role: ROLE_MAIRIE
+                    code:  politeia_core.admin.boite_a_idee_question    # admin code - service id
+                    icon:  fa-comments                  # font awesome icon
+                    text:  Boite à idées questions en ligne
+                    color: bg-yellow                 # colors: bg-yellow, bg-green, bg-red and bg-aqua
+                    filters:                         # filter values
+                        online: { value: true }
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id                
+                settings:
+                    role: ROLE_MAIRIE
+                    code:  politeia_core.admin.sondage    # admin code - service id
+                    icon:  fa-pie-chart                 # font awesome icon
+                    text:  Sondages en ligne
+                    color: bg-green                 # colors: bg-yellow, bg-green, bg-red and bg-aqua
+                    filters:                         # filter values
+                        online: { value: true }
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: center                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id                
+                settings:
+                    role: ROLE_MAIRIE
+                    code:  citoyen    # admin code - service id
+                    icon:  fa-users                  # font awesome icon
+                    text:  Utilisateurs
+                    color: bg-teal                 # colors: bg-yellow, bg-green, bg-red and bg-aqua
+
+        groups:      
+            politeia_core.admin.profil_mairie.group:
+                label: "politeia_core.admin.profil_mairie.group"
+                icon: '<i class="fa fa-institution"></i>'
+                items: 
+                    - politeia_core.admin.mairie
+                    - politeia_core.admin.planning
+                roles:
+                    - ROLE_MAIRIE
+                    
+            politeia_core.admin.news.group:
+                label: "politeia_core.admin.news.group"
+                icon: '<i class="fa fa-home"></i>'
+                items: 
+                    - politeia_core.admin.news
+                    - politeia_core.admin.alerte_pcs
+                roles:
+                    - ROLE_MAIRIE
+                    
+            politeia_core.admin.signalement.group:
+                label: "politeia_core.admin.signalement.group"
+                icon: '<i class="fa fa-bullhorn"></i>'
+                items: 
+                    - politeia_core.admin.signalement
+                    - politeia_core.admin.signalement_moderate
+                roles:
+                    - ROLE_REPORTS_ENABLED
+            
+            politeia_core.admin.boite_a_idee.group:
+                label: "politeia_core.admin.boite_a_idee.group"
+                icon: '<i class="fa fa-comments"></i>'
+                items:                     
+                    - politeia_core.admin.boite_a_idee_question
+                    - politeia_core.admin.boite_a_idee_reponse
+                roles:
+                    - ROLE_MAIRIE
+                    
+            politeia_core.admin.sondage.group:
+                label: "politeia_core.admin.sondage.group"
+                icon: '<i class="fa fa-pie-chart"></i>'
+                items:                     
+                    - politeia_core.admin.sondage
+                roles:
+                    - ROLE_MAIRIE
+            
+            politeia_core.admin.mairie.group:
+                label: "politeia_core.admin.mairie.group"
+                icon: '<i class="fa fa-institution"></i>'
+                items: 
+                    - politeia_core.admin.mairie
+                roles:
+                    - ROLE_ADMIN
+                    
+            politeia_core.admin.publicite.group:
+                label: "politeia_core.admin.publicite.group"
+                icon: '<i class="fa fa-bullhorn"></i>'
+                items: 
+                    - politeia_core.admin.publicite
+                roles:
+                    - ROLE_ADMIN        
+                    
+                    
+            
+            kreatys_cms.admin.group.content:
+                label: "kreatys_cms.admin.group.content"
+                icon: '<i class="fa fa-file-text-o"></i>'
+                items: 
+                    - kreatys_cms.admin.page
+                    - kreatys_cms.admin.menu
+                roles:
+                    - ROLE_ADMIN
+                                      
+            sonata_media:
+                label: "sonata_media"
+                icon: '<i class="fa fa-picture-o"></i>'
+                items: ~
+                roles:
+                    - ROLE_ADMIN
+                
+            sonata_user:
+                label: "sonata_user"
+                icon: '<i class="fa fa-users"></i>'
+                items:
+                    - sonata.user.admin.user
+                roles:
+                    - ROLE_ADMIN
+                    
+            kreatys_cms.admin.parametres.group:
+                label: "kreatys_cms.admin.parametres.group"
+                icon: '<i class="fa fa-cogs"></i>'
+                items: 
+                    - kreatys_cms.admin.parametres
+                roles:
+                    - ROLE_ADMIN
+
+                    
+            

@@ -1,0 +1,3 @@
+imports:
+    - { resource: menu.yml }
+    - { resource: paginator.yml }

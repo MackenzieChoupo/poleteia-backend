@@ -1,0 +1,6 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('preview') %}
+    <a href="{{ admin.generateObjectUrl('preview', object) }}" class="btn btn-sm btn-default view_link" title="{{ 'action_preview'|trans({}, 'KreatysCmsBundle') }}">
+        <i class="glyphicon glyphicon-eye-open"></i>
+        {{ 'action_preview'|trans({}, 'KreatysCmsBundle') }}
+    </a>
+{% endif %}

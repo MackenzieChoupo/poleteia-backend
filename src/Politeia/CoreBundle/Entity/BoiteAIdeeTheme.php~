@@ -1,0 +1,322 @@
+<?php
+
+namespace Politeia\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="p_bai_theme")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class BoiteAIdeeTheme
+{
+    /**
+     * @var int
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
+    /**
+     * @var Mairie 
+     * @ORM\ManyToOne(targetEntity="Mairie", inversedBy="boiteAIdeeThemes")
+     */     
+    protected $mairie;
+    
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $titre;
+    
+    /**
+     * @var string
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $texte;
+    
+    /**
+     * @var ArrayCollection 
+     * @ORM\OneToMany(targetEntity="BoiteAIdeeQuestion", mappedBy="theme", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
+     */
+    protected $questions;
+    
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     * @Gedmo\SortablePosition
+     */
+    protected $position;
+    
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean", options={"default"=false})
+     */
+    protected $online;    
+    
+    /**
+     * @var \Datetime $created
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    protected $created;
+
+    /**
+     * @var \Datetime $updated
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    protected $updated;
+
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+        $this->questions = new ArrayCollection();
+        $this->online = true;       
+    }
+    
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedValue()
+    {
+        $this->setUpdated(new \DateTime());
+    }
+    
+    /**
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->id ? $this->titre : 'Nouveau theme';
+    }
+    
+    /**
+     * 
+     * @return boolean
+     */
+    public function isDeletable()
+    {
+        return $this->questions->count() === 0;
+    }
+    
+    /**
+     * 
+     * @return integer
+     */
+    public function getNbQuestion()
+    {
+        return $this->questions->count();
+    }
+    
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return BoiteAIdeeTheme
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set texte
+     *
+     * @param string $texte
+     * @return BoiteAIdeeTheme
+     */
+    public function setTexte($texte)
+    {
+        $this->texte = $texte;
+
+        return $this;
+    }
+
+    /**
+     * Get texte
+     *
+     * @return string 
+     */
+    public function getTexte()
+    {
+        return $this->texte;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return BoiteAIdeeTheme
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set online
+     *
+     * @param boolean $online
+     * @return BoiteAIdeeTheme
+     */
+    public function setOnline($online)
+    {
+        $this->online = $online;
+
+        return $this;
+    }
+
+    /**
+     * Get online
+     *
+     * @return boolean 
+     */
+    public function getOnline()
+    {
+        return $this->online;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return BoiteAIdeeTheme
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return BoiteAIdeeTheme
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set mairie
+     *
+     * @param \Politeia\CoreBundle\Entity\Mairie $mairie
+     * @return BoiteAIdeeTheme
+     */
+    public function setMairie(\Politeia\CoreBundle\Entity\Mairie $mairie = null)
+    {
+        $this->mairie = $mairie;
+
+        return $this;
+    }
+
+    /**
+     * Get mairie
+     *
+     * @return \Politeia\CoreBundle\Entity\Mairie 
+     */
+    public function getMairie()
+    {
+        return $this->mairie;
+    }
+
+    /**
+     * Add questions
+     *
+     * @param \Politeia\CoreBundle\Entity\BoiteAIdeeQuestion $questions
+     * @return BoiteAIdeeTheme
+     */
+    public function addQuestion(\Politeia\CoreBundle\Entity\BoiteAIdeeQuestion $questions)
+    {
+        $this->questions[] = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param \Politeia\CoreBundle\Entity\BoiteAIdeeQuestion $questions
+     */
+    public function removeQuestion(\Politeia\CoreBundle\Entity\BoiteAIdeeQuestion $questions)
+    {
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+}

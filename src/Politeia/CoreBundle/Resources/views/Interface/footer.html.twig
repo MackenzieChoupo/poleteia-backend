@@ -1,0 +1,45 @@
+
+<div id="footer-widgets" class="no-line" data-section="footer-widgets">
+    <div class="container">
+        <div class="row">
+            <div class="first-footer-widget col-sm-12 col-md-3 text-center">
+                <img src="{{ asset('bundles/politeiacore/img/logo-footer.png') }}" alt="">
+                
+            </div>
+            <div class="second-footer-widget col-sm-12 col-md-4 col-md-offset-1">
+                {#<p class="text-center">Phasellus pretium interdum dolor vel consequat. Suspendisse porta imperdiet lacus. Morbi pulvinar auctor ipsum eget vehicula. Porttitor at finibus eget, gravida vitae ipsum.</p>
+                <p class="text-center">Phasellus pretium interdum dolor vel consequat. Suspendisse porta imperdiet lacus. Morbi pulvinar auctor ipsum eget vehicula. Porttitor at finibus eget, gravida vitae ipsum. Phasellus pretium interdum dolor vel consequat.</p>#}
+            </div>
+            <div class="second-footer-widget col-sm-12 col-md-3 col-md-offset-1">
+                <div class="widget-title">
+                    <h3>LIENS UTILES</h3>
+                </div>
+                <div class="footer-contact-info">
+                    <ul class="list-unstyled">
+                        <li><a href="{% if route_exist('kreatys_cms__cgu','fr') %}{{ path('kreatys_cms__cgu') }}{% endif %}">Conditions Générales d'Utilisations</a></li>
+                        <li><a href="{% if route_exist('kreatys_cms__mentions_legales','fr') %}{{ path('kreatys_cms__mentions_legales') }}{% endif %}">Mentions Légales</a></li>
+{#                        <li><a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a></li>#}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p class="row">
+            <span class="col-xs-12 col-sm-8 left">
+                © {{ 'now'|date('Y') }} <b>Politeia France</b> - Réalisation <a href="http://www.kreatys.com">Kreatys</a>
+            </span>
+            <span class="col-xs-12 col-sm-4 right">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+            </span>
+        </p>
+    </div>
+</footer>

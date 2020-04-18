@@ -1,0 +1,6 @@
+{% if admin.isGranted('EDIT', object) and admin.hasRoute('compose') %}
+    <a href="{{ admin.generateObjectUrl('compose', object) }}" class="btn btn-sm btn-default view_link" title="{{ 'action_compose'|trans({}, 'KreatysCmsBundle') }}">
+        <i class="fa fa-magic"></i>
+        {{ 'action_compose'|trans({}, 'KreatysCmsBundle') }}
+    </a>
+{% endif %}

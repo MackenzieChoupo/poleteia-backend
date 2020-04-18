@@ -1,0 +1,8 @@
+services:
+    
+    politeia_core.manager.user:
+        class: Politeia\CoreBundle\Manager\UserManager
+        arguments:
+            - @doctrine.orm.default_entity_manager            
+            - @politeia_core.repository.citoyen
+            

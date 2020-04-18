@@ -1,0 +1,75 @@
+{% extends "PoliteiaCoreBundle::layout.html.twig" %}
+
+
+{% block body %}
+    <div id="preloader">
+        <div class="spinner spinner-round"></div>
+    </div>
+
+    <header id="app-landing-page-header">
+        <div class="container">
+
+            <div class="top">
+                <p></p>
+            </div>
+            {% include 'PoliteiaCoreBundle:Block:Menu/navbar.html.twig' %}
+        </div>
+    </header>
+
+    {% block flashMessages %}
+        {% set newMessagesSuccess = [] %}
+        {% set newMessagesDanger = [] %}
+        {% set newMessagesInfo = [] %}
+        {% set newMessagesWarning = [] %}
+        {% set newFlashes = [] %}
+        {% for type, flashes in app.session.flashbag.All %}
+            {% for message in flashes %}
+                {% if type == 'fos_user_success' %}
+                    {% set type = 'success' %}
+                {% endif %}
+                {% if type == 'success' %}
+                    {% set newMessagesSuccess = newMessagesSuccess|merge({(loop.index): '<i class="fa fa-check"></i> ' ~ message|trans}) %}
+                    {% set newFlashes = newFlashes|merge({(type): newMessagesSuccess}) %}
+                {% endif %}
+                {% if type == 'danger' %}
+                    {% set newMessagesDanger = newMessagesDanger|merge({(loop.index): '<i class="fa fa-warning"></i> ' ~ message|trans}) %}
+                    {% set newFlashes = newFlashes|merge({(type): newMessagesDanger}) %}
+                {% endif %}
+                {% if type == 'info' %}
+                    {% set newMessagesInfo = newMessagesInfo|merge({(loop.index): '<i class="fa fa-question-circle"></i> ' ~ message|trans}) %}
+                    {% set newFlashes = newFlashes|merge({(type): newMessagesInfo}) %}
+                {% endif %}
+                {% if type == 'warning' %}
+                    {% set newMessagesWarning = newMessagesWarning|merge({(loop.index): '<i class="fa fa-warning"></i> ' ~ message|trans}) %}
+                    {% set newFlashes = newFlashes|merge({(type): newMessagesWarning}) %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        {{ app.session.flashbag.setAll(newFlashes) }}
+        {{ parent() }} 
+    {% endblock %}
+
+    <div class="padding-top-50 padding-bottom-50">
+        <div class="page-header">
+            <h2>
+                {% block fos_user_title %}
+                {% endblock fos_user_title %}
+            </h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block footer %}
+        {% include 'PoliteiaCoreBundle:Interface:footer.html.twig' %}
+    {% endblock %}
+
+    <a href="#home" class="scroll-to-top page-scroll"><i class="fa fa-angle-up"></i></a>
+
+{% endblock %}

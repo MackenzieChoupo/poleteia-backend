@@ -1,0 +1,25 @@
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Kreatys\UserBundle\Entity\User
+    
+#    from_email:
+#        address:     %mailer_from_address%
+#        sender_name: %mailer_from_name%
+#    
+#    registration:
+#        form:
+#            type: kreatys_user_registration
+#            handler: kreatys_user.registration.form.handler
+#        confirmation:
+#            enabled: true
+#    profile:
+#        form:
+#            type: kreatys_user_profile
+            
+    group:
+        group_class:   Kreatys\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
+
+    service:
+        user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)

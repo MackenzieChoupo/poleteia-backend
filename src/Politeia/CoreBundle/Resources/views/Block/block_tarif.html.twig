@@ -1,0 +1,76 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% set lien = '' %}
+{% set lien_page = '' %}
+{% if contents.lien_page is defined and contents.lien_page %}
+    {% set lien = path(contents.lien_page) %}
+    {% set lien_page = path(contents.lien_page) %}
+{% elseif contents.lien_ancre is defined and contents.lien_ancre %}
+    {% set lien = contents.lien_ancre %}
+{% elseif contents.lien_autre is defined and contents.lien_autre %}
+    {% set lien = contents.lien_autre %}
+{% endif %}
+
+{% block block %}
+
+    {% if front %}
+        <div class="pricing-table">
+            <div class="pricing-table-title">
+                <h5 class="pricing-title">{{ contents.titre }}</h5>
+            </div>
+            <div class="{{ contents.color }} pricing-table-price">
+                <p>
+                    <span class="pricing-currency">{{ contents.currency }}</span>
+                    <span class="pricing-price">{{ contents.price }}</span>
+                    <span class="pricing-period">{{ contents.period }}</span>
+                </p>
+            </div>
+            <div class="pricing-table-content">
+                <ul>
+                    {% for ligne in contents.text|split('\n') %}
+                        <li style="text-transform: uppercase;">{{ ligne }}</li>
+                        {% endfor %}
+                        {#                        {{ dump(contents.text|split('\n')) }}#}
+                        {#                    <li>DOLOR SIT AMET</li>#}
+                        {#                    <li>CONSECTETUR ADIPISCING</li>#}
+                        {#                    <li>ALIQUAM IMPERDIET</li>#}
+                        {#                    <li>TURPIS BIBENDUM NON</li>#}
+                        {#                    <li>ALIQUAM BLANDIT LOREM IPSUM</li>#}
+                        {#                    <li>IMPERDIET CONSECTETUR</li>#}
+                        {% if contents.disponibleApp is defined %}
+                            {% if contents.disponibleApp == 'storePlay' or contents.disponibleApp == 'store' %}
+                            <li class="tarif-disponible-store"><a href="{{ contents.urlAppStore is defined ? contents.urlAppStore:'' }}"><img src="{{ asset('bundles/politeiacore/img/disponible-sur-app-store.png') }}" /></a></li>
+                                {% endif %}
+                                {% if contents.disponibleApp == 'storePlay' or contents.disponibleApp == 'play' %}
+                            <li class="tarif-disponible-store"><a href="{{ contents.urlGooglePlay is defined ? contents.urlGooglePlay:'' }}"><img src="{{ asset('bundles/politeiacore/img/disponible-sur-google-play.png') }}" /></a></li>
+                                {% endif %}
+                            {% endif %}
+                </ul>
+                {% if contents.label_button is defined and contents.label_button %}
+                    <div class="pricing-table-button">
+                        <a href="{{ lien }}" class="btn btn-primary md">{{ contents.label_button }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <a href="#" onclick="blockEditContents({{ kblock.id }})" data-toggle="tooltip" data-placement="top" title="Cliquer pour modifier le contenu" style="display:block;">
+            <h4>Titre : {{ contents.titre is defined ? contents.titre|raw:'-' }}</h4>
+            <p>Devise : {{ contents.currency is defined ? contents.currency|raw:'-' }}</p>
+            <p>Prix : {{ contents.price is defined ? contents.price|raw:'-' }}</p>
+            <p>Période : {{ contents.period is defined ? contents.period|raw:'-' }}</p>
+            <p>Texte : {{ contents.text is defined ? contents.text|raw:'-' }}</p>
+            <p>Label du bouton : {{ contents.label_button is defined ? contents.label_button|raw:'-' }}</p>
+            <p>Lien page : {{ lien_page ? lien_page:'-' }}</p>
+            <p>Ou ancre : {{ contents.lien_ancre is defined ? contents.lien_ancre:'-' }}</p>
+            <p>Ou url : {{ contents.lien_autre is defined ? contents.lien_autre:'-' }}</p>
+            <p>Ouvrir la page : {{ contents.lien_target is defined ? contents.lien_target|raw:'' }}</p>
+            <p>Couleur : {{ contents.color is defined ? contents.color|raw:'-' }}</p>
+            <p>Disponible sur : {{ contents.disponibleApp is defined ? ('admin.block.tarif.disponible.'~contents.disponibleApp)|trans:'-' }}</p>
+            <p>Url App Store : {{ contents.urlAppStore is defined ? contents.urlAppStore:'-' }}</p>
+            <p>Url Google App : {{ contents.urlGooglePlay is defined ? contents.urlGooglePlay:'-' }}</p>
+        </a>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "KreatysUserBundle::layout.html.twig" %}
+
+{% block fos_user_title %}
+    Mot de passe oublié
+{% endblock fos_user_title %}
+
+{% block fos_user_content %}
+    {% include "KreatysUserBundle:Resetting:request_content.html.twig" %}
+{% endblock fos_user_content %}

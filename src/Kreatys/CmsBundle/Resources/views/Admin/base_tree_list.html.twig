@@ -1,0 +1,54 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'SonataAdminBundle:CRUD:base_list.html.twig' %}
+
+
+{% block tab_menu %}
+    {% include 'KreatysCmsBundle:Admin:list_tab_menu.html.twig' with {
+        'mode':        'tree',
+        'action':      action,
+        'admin':       admin,
+        'currentSite': 'TFreelances',
+    } only %}
+{% endblock %}
+
+{% block list_table %}
+    <div class="box box-primary">
+        <div class="box-header">
+            <h1 class="box-title">
+                {#                {{ 'pages.tree_site_label'|trans({}, 'SonataPageBundle') }}#}
+                <div class="btn-group">
+                    {#<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <strong class="text-info">{{ currentSite.name }}</strong> <span class="caret"></span>
+                    </button>#}
+                    {#<ul class="dropdown-menu" role="menu">
+                        {% for site in sites %}
+                            <li>
+                                <a href="{{ admin.generateUrl('tree', { 'site': site.id }) }}">
+                                    {% if currentSite and site.id == currentSite.id %}
+                                        <span class="pull-right">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    {% endif %}
+                                    {{ site.name }}
+                                </a>
+                            </li>
+                        {% endfor%}
+                    </ul>#}
+                </div>
+            </h1>
+        </div>
+        <div class="box-content">
+            {% block boxContent %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

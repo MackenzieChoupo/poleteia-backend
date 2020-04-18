@@ -1,0 +1,74 @@
+
+services:
+    
+    #***** CONTAINER
+    politeia_core.block.service.container:
+        class:  Politeia\CoreBundle\Block\Service\PContainerBlockService
+        arguments:
+            - politeia_core.block.service.container
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 10, group: conteneur, grouporder: 10 }
+    
+    #***** RAW CONTENT
+    politeia_core.block.service.raw_content:
+        class:  Politeia\CoreBundle\Block\Service\PRawContentBlockService
+        arguments:
+            - politeia_core.block.service.raw_content
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 20, group: TexteEtTitre, grouporder: 20 }
+    
+    #***** TITRE
+    politeia_core.block.service.titre:
+        class:  Politeia\CoreBundle\Block\Service\PTitreBlockService
+        arguments:
+            - politeia_core.block.service.titre
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 30, group: TexteEtTitre, grouporder: 20 }
+            
+    #***** BOUTON
+    politeia_core.block.service.button:
+        class:  Politeia\CoreBundle\Block\Service\ButtonBlockService
+        arguments:
+            - politeia_core.block.service.button
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 40, group: TexteEtTitre, grouporder: 20 }
+            
+    #***** IMAGE
+    politeia_core.block.service.image:
+        class:  Politeia\CoreBundle\Block\Service\PImageBlockService
+        arguments:
+            - politeia_core.block.service.image
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 10, group: PhotosOuGaleries, grouporder: 30 }
+            
+    #***** SECTION HEADER
+    politeia_core.block.service.section_header:
+        class:  Politeia\CoreBundle\Block\Service\SectionHeaderBlockService
+        arguments:
+            - politeia_core.block.service.section_header
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 50, group: TexteEtTitre, grouporder: 20 }
+            
+    #***** FEATURE
+    politeia_core.block.service.feature:
+        class:  Politeia\CoreBundle\Block\Service\FeatureBlockService
+        arguments:
+            - politeia_core.block.service.feature
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 60, group: TexteEtTitre, grouporder: 20 }
+            
+    #***** TARIF
+    politeia_core.block.service.tarif:
+        class:  Politeia\CoreBundle\Block\Service\TarifBlockService
+        arguments:
+            - politeia_core.block.service.tarif
+            - @service_container
+        tags:
+            - { name: kreatys_cms.block, ordre: 10 }

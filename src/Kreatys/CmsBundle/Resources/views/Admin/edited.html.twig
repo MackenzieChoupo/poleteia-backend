@@ -1,0 +1,7 @@
+<td class="sonata-ba-list-field sonata-ba-list-field-boolean">
+    {% if object.edited %}
+        <label class="label label-warning">{{ admin.trans('label_type_yes', {}, 'SonataAdminBundle') }}</label>
+    {% else %}
+        <label class="label label-success">{{ admin.trans('label_type_no', {}, 'SonataAdminBundle') }}</label>
+    {% endif %}
+</td>

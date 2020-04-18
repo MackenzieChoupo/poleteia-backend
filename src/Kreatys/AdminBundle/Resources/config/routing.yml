@@ -1,0 +1,3 @@
+admin:
+    resource: "@KreatysAdminBundle/Controller"
+    type:     annotation

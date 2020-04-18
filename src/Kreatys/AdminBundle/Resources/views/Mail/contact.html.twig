@@ -1,0 +1,14 @@
+{% extends 'KreatysAdminBundle::Mail/layout.html.twig' %}
+
+{% block content %}
+
+    <p>Bonjour<p>
+
+    <p>
+        {{ user.profil.nom }} {{ user.profil.prenom }} vous un message depuis l'admin de Politeia.
+    </p>
+    
+    <p><strong>Sujet : </strong>{{ sujet }}</p>
+    <p><strong>Message : </strong><br> {{ message|nl2br }}</p>
+    
+{% endblock %}

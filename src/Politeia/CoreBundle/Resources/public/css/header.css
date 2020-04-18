@@ -1,0 +1,255 @@
+/* 
+    Created on : 6 déc. 2017, 14:02:20
+    Author     : remi
+*/
+body #parallax-header-agency .top-menu p {
+  padding: 10px 40px;
+}
+body .navbar-3 {
+  background-color: transparent;
+  border: 3px solid white;
+  padding: 0 10px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+}
+body .navbar-3 li a span {
+  position: relative;
+  display: block;
+  padding-bottom: 35px;
+}
+body .navbar-3 li.active a span {
+  color: #0085c3;
+}
+body .navbar-3 .navbar-nav {
+  float: right;
+  max-width: 1200px;
+}
+body .navbar-3 .navbar-nav > li > a {
+  padding-top: 35px;
+  padding-bottom: 0;
+  position: relative;
+}
+body .navbar-3 a {
+  font-size: 16px;
+  color: #0085c3;
+  opacity: 0.8;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+body .navbar-3 a:hover,
+body .navbar-3 a:active,
+body .navbar-3 a:focus {
+  color: #0085c3;
+  opacity: 1;
+  text-decoration: none;
+  background: transparent !important;
+}
+body .navbar-3 a.navbar-brand {
+  height: 90px;
+  padding: 34px 25px;
+  margin: 0 !important;
+  font-size: 30px;
+  font-weight: 700;
+}
+body .navbar-3 a.navbar-brand > img {
+  max-height: 50px !Important;
+}
+body .navbar-3.no-line {
+  border: 0;
+}
+body .navbar-3.no-line li a span {
+  padding-bottom: 15px;
+}
+body .navbar-3.no-line li a span:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  bottom: 0;
+  left: 0;
+  background-color: #0085c3;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  -ms-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+body .navbar-3 .dropdown-icon {
+  color: #cccccc;
+}
+body .navbar-fixed-top.navbar-3 {
+  border-radius: 0;
+  background-color: white;
+  border: 0;
+}
+body .navbar-fixed-top.navbar-3 a {
+  color: #555555;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+body .navbar-fixed-top.navbar-3 a.navbar-brand {
+  color: #9c64b8 !important;
+  opacity: 1;
+}
+body .navbar-fixed-top.navbar-3 a:hover,
+body .navbar-fixed-top.navbar-3 a:active,
+body .navbar-fixed-top.navbar-3 a:focus {
+  color: #006290 !important;
+  text-decoration: none;
+  background: transparent !important;
+}
+body .navbar-fixed-top.navbar-3 li.active a span {
+  color: #006290;
+}
+body .navbar-fixed-top.navbar-3 li a span:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  -ms-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+body .navbar-fixed-top.navbar-3 .dropdown-menu > li > a {
+  color: #9c64b8 !important;
+}
+body #image-slider-header #home {
+  position: absolute;
+  max-width: 1170px;
+  z-index: 9999;
+}
+body #image-slider-header .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+body header h2 {
+  color: white;
+  font-size: 34px;
+  margin-top: 50px;
+  text-align: center;
+}
+body header a.btn {
+  margin-bottom: 50px;
+  color: white;
+  border: 2px solid white;
+  background: transparent;
+  opacity: 0.8;
+}
+body header a.btn:hover {
+  color: white;
+  border: 2px solid #006290;
+  background: #006290;
+  opacity: 1 !important;
+}
+body header a.btn:focus {
+  color: white;
+}
+body header a.btn-success {
+  color: white;
+  opacity: 1;
+  background-color: #87c056;
+  border-color: #87c056;
+}
+body header a.btn-success:hover {
+  background-color: #73a449;
+  border-color: #73a449;
+}
+body header a.btn-success.first-button {
+  margin-left: 0;
+}
+body #parallax-header {
+  background-image: url("../images/primary-polygon.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  text-align: center;
+  -webkit-box-shadow: inset 0px -95px #eeeeee;
+  -moz-box-shadow: inset 0px -95px #eeeeee;
+  box-shadow: inset 0px -95px #eeeeee;
+}
+body #parallax-header.single {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+body #parallax-header .header-content {
+  text-align: center;
+}
+body #parallax-header .banner-img img {
+  max-height: 60px;
+  margin: 20px auto;
+}
+body #parallax-header .parallax-header-main-img img {
+  max-height: 345px;
+}
+body #app-landing-page-header {
+  background-image: url("/bundles/politeiacore/img/bg-header-1.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  text-align: left;
+}
+body #app-landing-page-header .top {
+  margin-bottom: 0 !Important;
+  padding: 0 !Important;
+}
+body #app-landing-page-header .header-content {
+  text-align: left;
+}
+body #app-landing-page-header .header-content h2 {
+  text-align: left;
+  margin-top: 80px;
+}
+body #app-landing-page-header .header-content img {
+  margin-top: 30px;
+}
+body #app-landing-page-header h2 {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+body #app-landing-page-header p {
+  color: white;
+  font-size: 18px;
+  line-height: 36px;
+  width: 70%;
+  margin-bottom: 20px;
+}
+body #app-landing-page-header img {
+  width: 98%;
+}
+body #app-landing-page-header .separated-text {
+  margin-top: 60px;
+}
+/*# sourceMappingURL=header.css.map */

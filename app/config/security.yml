@@ -1,0 +1,314 @@
+
+security:
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    acl:
+        connection: default
+
+    role_hierarchy:
+        
+        ROLE_GESTION_CONTENU:
+            - ROLE_GESTION_MEDIA
+            - ROLE_GESTION_GALLERIE
+            
+            - ROLE_KREATYS_CMS_ADMIN_PAGE_LIST
+            - ROLE_KREATYS_CMS_ADMIN_PAGE_VIEW
+            - ROLE_KREATYS_CMS_ADMIN_PAGE_CREATE
+            - ROLE_KREATYS_CMS_ADMIN_PAGE_EDIT
+            - ROLE_KREATYS_CMS_ADMIN_PAGE_DELETE
+            - ROLE_KREATYS_CMS_ADMIN_PAGE_EXPORT
+            - ROLE_KREATYS_CMS_ADMIN_PAGE_OPERATOR
+            - ROLE_KREATYS_CMS_ADMIN_PAGE_MASTER
+            
+            - ROLE_KREATYS_CMS_ADMIN_BLOCK_LIST
+            - ROLE_KREATYS_CMS_ADMIN_BLOCK_VIEW
+            - ROLE_KREATYS_CMS_ADMIN_BLOCK_CREATE
+            - ROLE_KREATYS_CMS_ADMIN_BLOCK_EDIT
+            - ROLE_KREATYS_CMS_ADMIN_BLOCK_DELETE
+            - ROLE_KREATYS_CMS_ADMIN_BLOCK_EXPORT
+            - ROLE_KREATYS_CMS_ADMIN_BLOCK_OPERATOR
+            - ROLE_KREATYS_CMS_ADMIN_BLOCK_MASTER
+            
+            - ROLE_KREATYS_CMS_ADMIN_MENU_LIST
+            - ROLE_KREATYS_CMS_ADMIN_MENU_VIEW
+            - ROLE_KREATYS_CMS_ADMIN_MENU_CREATE
+            - ROLE_KREATYS_CMS_ADMIN_MENU_EDIT
+            - ROLE_KREATYS_CMS_ADMIN_MENU_DELETE
+            - ROLE_KREATYS_CMS_ADMIN_MENU_EXPORT
+            - ROLE_KREATYS_CMS_ADMIN_MENU_OPERATOR
+            - ROLE_KREATYS_CMS_ADMIN_MENU_MASTER
+            
+            - ROLE_KREATYS_CMS_ADMIN_PARAMETRES_LIST
+            - ROLE_KREATYS_CMS_ADMIN_PARAMETRES_VIEW
+            - ROLE_KREATYS_CMS_ADMIN_PARAMETRES_CREATE
+            - ROLE_KREATYS_CMS_ADMIN_PARAMETRES_EDIT
+            - ROLE_KREATYS_CMS_ADMIN_PARAMETRES_DELETE
+            - ROLE_KREATYS_CMS_ADMIN_PARAMETRES_EXPORT
+            - ROLE_KREATYS_CMS_ADMIN_PARAMETRES_OPERATOR
+            - ROLE_KREATYS_CMS_ADMIN_PARAMETRES_MASTER
+            
+            - ROLE_KREATYS_CMS_ADMIN_SEO_LIST
+            - ROLE_KREATYS_CMS_ADMIN_SEO_VIEW
+            - ROLE_KREATYS_CMS_ADMIN_SEO_CREATE
+            - ROLE_KREATYS_CMS_ADMIN_SEO_EDIT
+            - ROLE_KREATYS_CMS_ADMIN_SEO_DELETE
+            - ROLE_KREATYS_CMS_ADMIN_SEO_EXPORT
+            - ROLE_KREATYS_CMS_ADMIN_SEO_OPERATOR
+            - ROLE_KREATYS_CMS_ADMIN_SEO_MASTER
+            
+            - ROLE_KREATYS_LS_ADMIN_SLIDESHOW_LIST
+            - ROLE_KREATYS_LS_ADMIN_SLIDESHOW_VIEW
+            - ROLE_KREATYS_LS_ADMIN_SLIDESHOW_CREATE
+            - ROLE_KREATYS_LS_ADMIN_SLIDESHOW_EDIT
+            - ROLE_KREATYS_LS_ADMIN_SLIDESHOW_DELETE
+            - ROLE_KREATYS_LS_ADMIN_SLIDESHOW_EXPORT
+            - ROLE_KREATYS_LS_ADMIN_SLIDESHOW_OPERATOR
+            - ROLE_KREATYS_LS_ADMIN_SLIDESHOW_MASTER
+            
+            - ROLE_KREATYS_LS_ADMIN_SLIDE_LIST
+            - ROLE_KREATYS_LS_ADMIN_SLIDE_VIEW
+            - ROLE_KREATYS_LS_ADMIN_SLIDE_CREATE
+            - ROLE_KREATYS_LS_ADMIN_SLIDE_EDIT
+            - ROLE_KREATYS_LS_ADMIN_SLIDE_DELETE
+            - ROLE_KREATYS_LS_ADMIN_SLIDE_EXPORT
+            - ROLE_KREATYS_LS_ADMIN_SLIDE_OPERATOR       
+            - ROLE_KREATYS_LS_ADMIN_SLIDE_MASTER
+            
+            - ROLE_KREATYS_LS_ADMIN_LAYER_LIST
+            - ROLE_KREATYS_LS_ADMIN_LAYER_VIEW
+            - ROLE_KREATYS_LS_ADMIN_LAYER_CREATE
+            - ROLE_KREATYS_LS_ADMIN_LAYER_EDIT
+            - ROLE_KREATYS_LS_ADMIN_LAYER_DELETE
+            - ROLE_KREATYS_LS_ADMIN_LAYER_EXPORT
+            - ROLE_KREATYS_LS_ADMIN_LAYER_OPERATOR
+            - ROLE_KREATYS_LS_ADMIN_LAYER_MASTER            
+            
+        ROLE_GESTION_MEDIA:
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_LIST
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_VIEW
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_CREATE
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_EDIT
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_DELETE
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_EXPORT
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_OPERATOR
+            - ROLE_SONATA_MEDIA_ADMIN_MEDIA_MASTER  
+            
+        ROLE_GESTION_GALLERIE:
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_LIST
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_VIEW
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_CREATE
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_EDIT
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_DELETE
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_EXPORT
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_OPERATOR
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_MASTER            
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_HAS_MEDIA_LIST
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_HAS_MEDIA_VIEW
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_HAS_MEDIA_CREATE
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_HAS_MEDIA_EDIT
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_HAS_MEDIA_DELETE
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_HAS_MEDIA_EXPORT
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_HAS_MEDIA_OPERATOR
+            - ROLE_SONATA_MEDIA_ADMIN_GALLERY_HAS_MEDIA_MASTER
+            
+        ROLE_GESTION_UTILISATEUR:
+            - ROLE_SONATA_USER_ADMIN_USER_CREATE
+            - ROLE_SONATA_USER_ADMIN_USER_DELETE
+            - ROLE_SONATA_USER_ADMIN_USER_EDIT
+            - ROLE_SONATA_USER_ADMIN_USER_LIST
+            - ROLE_SONATA_USER_ADMIN_USER_VIEW
+            - ROLE_SONATA_USER_ADMIN_USER_EXPORT
+            - ROLE_SONATA_USER_ADMIN_USER_OPERATOR
+            - ROLE_SONATA_USER_ADMIN_USER_MASTER            
+            
+            
+        ROLE_GESTION_MAIRIE:
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_MASTER
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_MASTER
+            
+            - ROLE_POLITEIA_CORE_ADMIN_PUBLICITE_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_PUBLICITE_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_PUBLICITE_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_PUBLICITE_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_PUBLICITE_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_PUBLICITE_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_PUBLICITE_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_PUBLICITE_MASTER
+            
+        ROLE_ACCES_MAIRIE:
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_EDIT  
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_MAIRIE_HORAIRE_MASTER
+            
+            - ROLE_POLITEIA_CORE_ADMIN_NEWS_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_NEWS_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_NEWS_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_NEWS_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_NEWS_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_NEWS_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_NEWS_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_NEWS_MASTER
+            
+            - ROLE_POLITEIA_CORE_ADMIN_ALERTE_PCS_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_ALERTE_PCS_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_ALERTE_PCS_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_ALERTE_PCS_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_ALERTE_PCS_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_ALERTE_PCS_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_ALERTE_PCS_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_ALERTE_PCS_MASTER
+            
+            - ROLE_POLITEIA_CORE_ADMIN_SIGNALEMENT_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_SIGNALEMENT_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_SIGNALEMENT_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_SIGNALEMENT_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_SIGNALEMENT_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_SIGNALEMENT_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_SIGNALEMENT_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_SIGNALEMENT_MASTER
+            
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_THEME_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_THEME_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_THEME_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_THEME_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_THEME_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_THEME_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_THEME_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_THEME_MASTER
+            
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_QUESTION_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_QUESTION_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_QUESTION_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_QUESTION_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_QUESTION_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_QUESTION_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_QUESTION_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_QUESTION_MASTER
+            
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_REPONSE_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_REPONSE_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_REPONSE_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_REPONSE_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_REPONSE_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_REPONSE_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_REPONSE_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_BOITE_A_IDEE_REPONSE_MASTER
+            
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_MASTER
+            
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_CHOIX_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_CHOIX_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_CHOIX_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_CHOIX_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_CHOIX_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_CHOIX_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_CHOIX_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_SONDAGE_CHOIX_MASTER
+            
+            - ROLE_POLITEIA_CORE_ADMIN_PLANNING_LIST
+            - ROLE_POLITEIA_CORE_ADMIN_PLANNING_VIEW
+            - ROLE_POLITEIA_CORE_ADMIN_PLANNING_CREATE
+            - ROLE_POLITEIA_CORE_ADMIN_PLANNING_EDIT
+            - ROLE_POLITEIA_CORE_ADMIN_PLANNING_DELETE
+#            - ROLE_POLITEIA_CORE_ADMIN_PLANNING_EXPORT
+            - ROLE_POLITEIA_CORE_ADMIN_PLANNING_OPERATOR
+            - ROLE_POLITEIA_CORE_ADMIN_PLANNING_MASTER
+
+        
+        ROLE_USER:     
+        ROLE_MAIRIE:       [ROLE_USER, ROLE_ACCES_MAIRIE]
+        ROLE_ADMIN:        [ROLE_USER, ROLE_SONATA_ADMIN, ROLE_GESTION_CONTENU, ROLE_GESTION_UTILISATEUR, ROLE_GESTION_MAIRIE]
+        ROLE_SUPER_ADMIN:  [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, SONATA] #, SONATA
+        SONATA:
+            - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT  # if you are using acl then this line must be commented
+            - ROLE_SONATA_PAGE_ADMIN_BLOCK_EDIT
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        # -> custom firewall for the admin area of the URL    
+        admin:
+            pattern:            /admin(.*)
+            context:            user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /admin/login                
+                use_forward:    false
+                check_path:     /admin/login_check
+                failure_path:   null
+                default_target_path: sonata_admin_dashboard 
+                always_use_default_target_path: true
+            logout:
+                path:           /admin/logout
+            anonymous:          true
+        # -> end custom configuration
+
+        main:
+            #pattern: ^/
+            pattern:             .*
+            context:             user
+            form_login:
+                provider:       fos_userbundle                
+                login_path:     /login
+                use_forward:    false                
+                check_path:     fos_user_security_check
+            logout:
+                invalidate_session: false
+                path: fos_user_security_logout
+            anonymous:          true
+
+    access_control:
+        # URL of FOSUserBundle which need to be available to anonymous users
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # Admin login page needs to be access without credential
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # Secured part of the site
+        # This config requires being logged for the whole site and having the admin role for the admin part.
+        # Change these rules to adapt them to your needs
+        - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_MAIRIE, ROLE_SONATA_ADMIN] }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

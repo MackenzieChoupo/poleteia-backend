@@ -1,0 +1,18 @@
+action_edit: Modifier
+
+politeia_core:
+    admin:
+        mairie:
+            group: Gestion des mairies
+        profil_mairie:
+            group: Ma mairie
+        news:
+            group: Actualités / Alertes
+        signalement:            
+            group: Signalements
+        boite_a_idee:            
+            group: Boite à idées
+        sondage:            
+            group: Sondages
+        publicite:            
+            group: Publicités

@@ -1,0 +1,17 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+
+    {% if not front %}<div class="block-icon-text">{% endif %}
+        <div class="service">
+            <i class="fa fa-{{ contents.icon }} service-icon" {% if  not front %}data-toggle="modal" data-target="#modalChoiceIcon" data-id="{{ kblock.id }}" data-icon="{{ contents.icon }}"{% endif %}></i>
+            <div class="desc">
+                <h4{% if not front %} class="title-editable" data-id="{{ kblock.id }}" data-field="titre"{% endif %}>{{ contents.titre|raw }}</h4>
+                {% if not front %}<div class="text-editable" data-id="{{ kblock.id }}" data-field="text">{% else %}<p>{% endif %}    
+                        {{ contents.text|raw }}
+                        {% if not front %}</div>{% else %}</p>{% endif %}
+            </div>
+        </div>
+    {% if not front %}</div>{% endif %}
+{% endblock %}

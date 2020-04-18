@@ -1,0 +1,41 @@
+{% extends 'KreatysAdminBundle::standard_layout.html.twig' %}
+
+{% block sonata_admin_content %}
+    
+    {% block notice %}
+        {% include 'SonataCoreBundle:FlashMessage:render.html.twig' %}
+    {% endblock notice %}
+    
+    <div class="sonata-ba-form">
+        
+        {{ form_start(form) }}
+        
+        <div class="row">            
+            <div class="col-md-6 col-sm-6">                
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h4 class="box-title">
+                            Nous contacter
+                        </h4>
+                    </div>
+                    <div class="box-body">
+        
+                        {{ form_row(form.sujet) }}
+
+                        {{ form_row(form.message) }}        
+                        
+                        <div class="form-group">
+                            <div class="col-sm-12 pull-right">
+                                <button type="submit" class="btn btn-success pull-right"><i class="fa fa-envelope"></i> Envoyer</button>
+                            </div>
+                        </div>
+                            
+                    </div>        
+                </div>        
+            </div>        
+        </div>            
+            
+        {{ form_end(form) }}   
+        
+    </div>
+{% endblock %}

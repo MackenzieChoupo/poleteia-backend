@@ -1,0 +1,131 @@
+{% extends 'KreatysCmsBundle::layout.html.twig' %}
+
+{% block title %}Politeia - {% endblock %}
+
+{% block metas %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block icon %}<link rel="icon" type="image/png" href="/favicon.png" />{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+            'bundles/politeiacore/plugins/bootstrap/bootstrap.min.css'
+            'bundles/politeiacore/plugins/font-awesome/css/font-awesome.min.css'
+            'bundles/politeiacore/plugins/linear-icons/css/linear-icons.css'
+
+            'bundles/politeiacore/css/style.css'
+
+            'bundles/politeiacore/css/custom.css'
+
+            output='css/politeia.css'
+            filter='?yui_css,cssrewrite'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+    
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700' rel='stylesheet' type='text/css'>
+
+    {% if page is defined %}
+        {% for stylesheet in page.stylesheets|split('\n') %}
+            {% if stylesheet is not empty %}
+                <link href="{{ asset(stylesheet|trim) }}" rel="stylesheet" media="screen" />
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+{% endblock %}
+
+{% block body %}
+    <div id="preloader">
+        <div class="spinner spinner-round"></div>
+    </div>
+    
+{#    {% include 'PoliteiaCoreBundle:Interface:header.html.twig' %}#}
+
+    {% block flashMessages %}
+        {% set newMessagesSuccess = [] %}
+        {% set newMessagesDanger = [] %}
+        {% set newMessagesInfo = [] %}
+        {% set newMessagesWarning = [] %}
+        {% set newFlashes = [] %}
+        {% for type, flashes in app.session.flashbag.All %}
+            {% for message in flashes %}
+                {% if type == 'fos_user_success' %}
+                    {% set type = 'success' %}
+                {% endif %}
+                {% if type == 'success' %}
+                    {% set newMessagesSuccess = newMessagesSuccess|merge({(loop.index): '<i class="fa fa-check"></i> ' ~ message|trans}) %}
+                    {% set newFlashes = newFlashes|merge({(type): newMessagesSuccess}) %}
+                {% endif %}
+                {% if type == 'danger' %}
+                    {% set newMessagesDanger = newMessagesDanger|merge({(loop.index): '<i class="fa fa-warning"></i> ' ~ message|trans}) %}
+                    {% set newFlashes = newFlashes|merge({(type): newMessagesDanger}) %}
+                {% endif %}
+                {% if type == 'info' %}
+                    {% set newMessagesInfo = newMessagesInfo|merge({(loop.index): '<i class="fa fa-question-circle"></i> ' ~ message|trans}) %}
+                    {% set newFlashes = newFlashes|merge({(type): newMessagesInfo}) %}
+                {% endif %}
+                {% if type == 'warning' %}
+                    {% set newMessagesWarning = newMessagesWarning|merge({(loop.index): '<i class="fa fa-warning"></i> ' ~ message|trans}) %}
+                    {% set newFlashes = newFlashes|merge({(type): newMessagesWarning}) %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        {{ app.session.flashbag.setAll(newFlashes) }}
+        {{ parent() }} 
+    {% endblock %}
+
+    {#    {% block content %}{{ parent() }}{% endblock %}#}
+{#    {% include 'PoliteiaCoreBundle:Template:header.html.twig' %}#}
+    {% block content %}{% include 'PoliteiaCoreBundle:Template:content.html.twig' %}{% endblock %}
+{#    {% include 'PoliteiaCoreBundle:Template:content.html.twig' %}#}
+
+    {% block footer %}{% include 'PoliteiaCoreBundle:Interface:footer.html.twig' %}{% endblock %}
+    
+    <a href="#home" class="scroll-to-top page-scroll"><i class="fa fa-angle-up"></i></a>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+                'bundles/politeiacore/plugins/jquery/jquery.min.js'
+                'bundles/politeiacore/plugins/bootstrap/bootstrap.min.js'
+                'bundles/fosjsrouting/js/router.js'
+
+                'bundles/politeiacore/js/preloader.js'
+                'bundles/politeiacore/js/sticky-nav.js'
+                'bundles/politeiacore/js/jquery.easing.min.js'
+                'bundles/politeiacore/js/jquery.nav.js'
+                'bundles/politeiacore/js/scrolling-nav.js'
+
+                output='js/politeia.js'
+                filter='?yui_js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}" ></script>
+    {% endjavascripts %}
+
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    {% if page is defined %}
+        {% for javascript in page.javascripts|split('\n') %}
+            {% if javascript is not empty %}
+                <script type="text/javascript" src="{{ asset(javascript|trim) }}" ></script>
+            {% endif %}
+        {% endfor %}
+        {{ page.googleAnalitics ? page.googleAnalitics|raw:params.seo.googleAnalitics|raw }}
+    {% endif %}
+    
+    <script>
+        $(document).ready(function() {
+            $('.nav').onePageNav();
+        });
+    </script>
+{% endblock %}

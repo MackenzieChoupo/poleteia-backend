@@ -1,0 +1,11 @@
+sonata_user:
+    security_acl: true
+    manager_type: orm # can be orm or mongodb
+    class:
+        user: Kreatys\UserBundle\Entity\User
+        group: Kreatys\UserBundle\Entity\Group
+    admin:
+        user:
+            class: Kreatys\UserBundle\Admin\UserAdmin
+            controller: SonataAdminBundle:CRUD
+            translation: SonataUserBundle

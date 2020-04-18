@@ -1,0 +1,20 @@
+services:
+    
+    # Form Type
+    politeia_core.form.user_resetting.type:        
+        class: Politeia\CoreBundle\Form\Type\ResettingFormType   
+        tags:
+            - { name: form.type, alias: user_resetting }
+            
+    politeia_core.contact.form.type:        
+        class: Politeia\CoreBundle\Form\Type\ContactType
+        arguments:
+#            - @baon_core.repository.contact_sujet
+        tags:
+            - { name: form.type, alias: politeia_contact_form }
+            
+    # Form Handler
+    politeia_core.contact.form.handler:
+        class: Politeia\CoreBundle\Form\Handler\ContactHandler
+            
+    

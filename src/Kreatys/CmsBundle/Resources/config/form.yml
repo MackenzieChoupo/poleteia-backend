@@ -1,0 +1,9 @@
+
+services:
+    
+    # Form Type
+    kreatys_cms.block_choice_type.form.type:        
+        class: Kreatys\CmsBundle\Form\BlockChoiceFieldType   
+#        arguments: [@doctrine.orm.default_entity_manager]
+        tags:
+            - { name: form.type, alias: block_choice_type }

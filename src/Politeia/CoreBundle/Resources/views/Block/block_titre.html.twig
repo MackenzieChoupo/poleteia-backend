@@ -1,0 +1,20 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+    {% if front %}
+        {% if front and kblock.lvl < 2 %}
+            <div class="container">
+            {% endif %}
+            <div class="{{ settings.padding_top }} {{ settings.padding_bottom }}">
+                {% if settings.text_align is defined %}<div class="{{ settings.text_align }}">{% endif %}
+                {% endif %}
+                <h2{% if not front %} class="title-editable" data-id="{{ kblock.id }}" data-field="titre"{% endif %}>{{ contents.titre|raw }}</h2>
+                {% if front %}
+                {% if settings.text_align is defined %}</div>{% endif %}
+            </div>
+            {% if front and kblock.lvl < 2 %}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

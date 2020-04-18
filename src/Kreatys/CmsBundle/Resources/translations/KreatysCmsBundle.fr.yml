@@ -1,0 +1,32 @@
+"Page List": Liste des pages
+"Menu List": Menu
+
+Editée: Editée
+"En ligne": En ligne
+Nom: Nom
+Titre: Titre
+Action: Action
+"Editée (non publiée)": Editée (non publiée)
+Pages: Pages
+Menu: Menu
+"Configuration de la page": Configuration de la page
+"Nom de la page": Nom de la page
+"Titre de la page": Titre de la page
+"Parent": Parent
+"Mettre en ligne ?": Mettre en ligne ?
+"Référencement (SEO)": Référencement (SEO)
+"Meta titre": Meta titre
+"Meta keywords": Meta keywords
+"Meta description": Meta description
+"Pages éditées": Pages éditées
+Internautes: Internautes
+Freelances: Freelances
+
+
+action_preview: Prévisualiser
+action_compose: Composer
+action_page_edit: Editer la page
+action_page_compose: Composer
+action_page_publish: Publier
+action_page_preview: Prévisualiser
+action_page_publish_force: Publier (force)

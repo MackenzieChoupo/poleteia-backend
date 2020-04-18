@@ -1,0 +1,64 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% set target = '' %}
+{% if contents.lien_target is defined and contents.lien_target != '' %}
+    {% set target = ' target="' ~ contents.lien_target ~ '"' %}
+{% endif %}
+
+{% set link = false %}
+{% if front and contents.lien_page is defined and contents.lien_page is not null and contents.lien_page != '' %}
+    {% set link = path(contents.lien_page) %}
+{% elseif front and contents.lien_autre is defined and contents.lien_autre is not null and contents.lien_autre != '' %}
+    {% set link = contents.lien_autre %}
+{% endif %}
+
+{% set isVideo = false %}
+{% if contents.image is not null and 'video' in contents.image.contentType %}
+    {% set isVideo = true %}
+{% endif %}
+
+{% block block %}
+    {% if front %}
+{#        <div class="{{ settings.background }}">#}
+            {% if kblock.lvl == 1 %}
+                <div class="container">
+                {% endif %}
+{#                <div class="{{ settings.padding_top }} {{ settings.padding_bottom }} {{ settings.text_align }} {{ isVideo ? 'video-conteneur':'img-conteneur' }}">#}
+                <div class="{{ settings.padding_top }} {{ settings.padding_bottom }} {{ isVideo ? 'video-conteneur':'img-conteneur' }}">
+                    {% if contents.image is not null %}
+                        {% if link and not isVideo %}
+                            <a href="{{ link }}"{{ target|raw }}>
+                            {% endif %}
+                            {% media contents.image, 'reference' with {'class': 'img-responsive ' ~ (settings.image_options is defined ? settings.image_options:'')} %}
+                            {% if link and not isVideo %}
+                            </a>
+                        {% endif %}
+                    {% else %}
+                        <img src="https://placehold.it/555x250" class="img-responsive" />
+                    {% endif %} 
+                </div>
+                {% if kblock.lvl == 1 %}
+                </div>
+            {% endif %}
+{#        </div>#}
+    {% else %}
+        <div class="text-center">
+            <div style="display: inline-block; width: 100%;">
+                {% if isVideo %}
+                    <a href="#" onclick="blockEditContents({{ kblock.id }})" data-toggle="tooltip" data-placement="top" title="Cliquer pour changer/modifier l'image" class="btn btn-primary pull-left">Changer/Modifier la vidéo</a>
+                {% else %}
+                    <a href="#" onclick="blockEditContents({{ kblock.id }})" data-toggle="tooltip" data-placement="top" title="Cliquer pour changer/modifier l'image">
+                    {% endif %}
+                    {% if contents.image is not null %}
+                        {% media contents.image, 'grande' with {'class': 'img-responsive ' ~ (settings.image_options is defined ? settings.image_options:'')} %}
+                    {% else %}
+                        <img src="https://placehold.it/555x250" class="img-responsive" />
+                    {% endif %}
+                    {% if not isVideo %}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

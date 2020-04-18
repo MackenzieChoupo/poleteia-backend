@@ -1,0 +1,52 @@
+sonata_admin:
+    title: Administration
+    title_logo: bundles/kreatysadmin/img/logo-kreatys.png
+    
+    templates:
+        layout: KreatysAdminBundle::standard_layout.html.twig
+    
+    assets:
+        javascripts:
+            - bundles/sonataadmin/vendor/jquery/dist/jquery.min.js
+            # Defaults:
+            - bundles/sonataadmin/vendor/jquery.scrollTo/jquery.scrollTo.min.js
+            - bundles/sonatacore/vendor/moment/min/moment.min.js
+            - bundles/sonataadmin/vendor/jqueryui/ui/minified/jquery-ui.min.js
+            - bundles/sonataadmin/vendor/bootstrap/dist/js/bootstrap.min.js
+            - bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js
+            - bundles/sonataadmin/vendor/jqueryui/ui/minified/i18n/jquery-ui-i18n.min.js
+            - bundles/sonataadmin/jquery/jquery.form.js
+            - bundles/sonataadmin/jquery/jquery.confirmExit.js
+            - bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js
+            - bundles/sonataadmin/vendor/select2/select2.min.js
+            - bundles/kreatyscms/js/App.js
+            - bundles/sonataadmin/Admin.js
+            - bundles/kreatyscms/js/tinymce.min.js
+            - bundles/kreatyscms/js/jquery.validate.min.js
+            - bundles/kreatyscms/js/main.js
+            - bundles/fosjsrouting/js/router.js            
+            - bundles/kreatysadmin/js/admin.js
+
+        stylesheets:
+            # Defaults:
+            - bundles/sonataadmin/vendor/bootstrap/dist/css/bootstrap.min.css            
+#            - bundles/sonataadmin/vendor/AdminLTE/css/font-awesome.min.css
+            - bundles/kreatyscms/assets/font-awesome/css/font-awesome.min.css
+            - bundles/sonataadmin/vendor/AdminLTE/css/ionicons.min.css
+            - bundles/sonataadmin/vendor/AdminLTE/css/AdminLTE.css
+            - bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css
+            - bundles/sonataadmin/vendor/jqueryui/themes/base/jquery-ui.css
+            - bundles/sonataadmin/vendor/select2/select2.css
+            - bundles/sonataadmin/vendor/select2/select2-bootstrap.css
+            - bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css
+            - bundles/sonataadmin/css/styles.css
+            - bundles/sonataadmin/css/layout.css
+#            - bundles/kreatysadmin/css/style.css
+            - bundles/kreatysadmin/css/iCheck/blue.css
+            - bundles/kreatysadmin/css/admin.css
+            - bundles/kreatysadmin/css/blocks.css
+            
+#    extensions:
+#        cmf_block.admin_extension.cache:
+#            extends:
+#                - Symfony\Cmf\Bundle\BlockBundle\Model\AbstractBlock

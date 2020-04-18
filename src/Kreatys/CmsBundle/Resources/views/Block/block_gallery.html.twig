@@ -1,0 +1,62 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+    {% if not front %}<div class="text-center"><div style="display: inline-block; width: 100%;">{% else %}<div class="{{ settings.background }}">{% if kblock.lvl == 1 and (settings.all_page is not defined or not settings.all_page) %}<div class="container">{% endif %}<div class="{{ settings.padding_top }} {{ settings.padding_bottom }}">{% endif %}
+            
+        {% if not front %}<a href="#" onclick="blockEditContents({{ kblock.id }})" data-toggle="tooltip" data-placement="top" title="Cliquer pour changer/modifier la galerie">{% endif %}
+            
+        {% if contents.gallery is defined and contents.gallery is not null %}
+            {% if not front %}
+                <div class="row">
+                    {% set col = 12 / (contents.gallery.galleryHasMedias|length)|round(0, 'floor') %}
+                    {% for img in contents.gallery.galleryHasMedias %}
+                        <div class="col-sm-{{ col }}">
+                            {% thumbnail img.media, contents.gallery.defaultFormat with {'class': 'img-responsive'} %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+
+                {% set interval = 5000 %}
+                {% if settings.interval is defined and settings.interval != '' %}
+                    {% set interval = settings.interval %}
+                {% endif %}
+                <div id="carousel-gallery-{{ contents.gallery.id }}" class="carousel slide" data-ride="carousel" data-interval="{{ interval }}">
+                    <ol class="carousel-indicators">
+                    {% for img in contents.gallery.galleryHasMedias %}
+                        <li data-target="#carousel-gallery-{{ contents.gallery.id }}" data-slide-to="{{ loop.index0 }}"{% if loop.first %} class="active"{% endif %}></li>                          
+                    {% endfor %}
+                    </ol>
+                    
+                    <div class="carousel-inner" role="listbox">
+                        {% for img in contents.gallery.galleryHasMedias %}                            
+                        <div class="item{% if loop.first %} active{% endif %}">
+                            <img src="{% path img.media, 'reference' %}" alt="" />                            
+                            <div class="carousel-caption"></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    {% if settings.show_controls %}
+                    <a class="left carousel-control" href="#carousel-gallery-{{ contents.gallery.id }}" role="button" data-slide="prev" onclick="$('#carousel-gallery-{{ contents.gallery.id }}').carousel('prev')">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Précedent</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-gallery-{{ contents.gallery.id }}" role="button" data-slide="next" onclick="$('#carousel-gallery-{{ contents.gallery.id }}').carousel('next')">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Suivant</span>
+                    </a>
+                    {% endif %}
+                </div>
+                    
+                    
+            {% endif %} 
+        {% else %}
+                <img src="https://placehold.it/555x250" class="img-responsive" />
+        {% endif %} 
+        {% if not front %}</a>{% endif %}
+
+        {% if not front %}</div></div>{% else %}</div>{% if kblock.lvl == 1 %}</div>{% endif %}</div>{% endif %}
+    
+{% endblock %}

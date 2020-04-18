@@ -1,0 +1,11 @@
+imports:
+    - { resource: user.yml }
+    - { resource: block.yml }
+#    - { resource: cache.yml }
+#    - { resource: seo.yml }
+#    - { resource: notification.yml }
+    - { resource: admin.yml }
+#    - { resource: formatter.yml }
+    - { resource: media.yml }
+    - { resource: dashboard.yml }
+    - { resource: translation.yml }

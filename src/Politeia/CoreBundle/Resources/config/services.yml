@@ -1,0 +1,19 @@
+imports:
+    - { resource: 'block.yml' }
+    - { resource: 'form_type.yml' }
+    - { resource: 'repository.yml' }
+    - { resource: 'manager.yml' }
+#    - { resource: 'validator.yml' }
+    - { resource: 'admin.yml' }
+
+services:
+    
+    # Front
+    app.menu_builder:
+        class: Politeia\CoreBundle\Menu\MenuBuilder
+        arguments:
+            - @knp_menu.factory
+            - @doctrine.orm.entity_manager
+            - @router
+        tags:
+            - { name: knp_menu.menu_builder, method: createMainMenu, alias: mainPoliteia }

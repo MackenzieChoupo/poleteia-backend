@@ -1,0 +1,27 @@
+{% if not front and kblock.lvl > 0 %}
+    {% if 'colonne' not in kblock.name %}
+    <div class="compose-block-enabled{{ kblock.enabled ? ' enabled' : '' }}" data-id="{{ kblock.id }}" data-toggle="tooltip" data-placement="right" title="Activer / désactiver le bloc">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-{{ kblock.enabled ? 'check' : 'times' }} fa-stack-1x"></i>
+        </span>
+    </div>
+    {% endif %}
+    <div class="compose-block-btn">
+        {% if kblock.type == block_container_type and (kblock.setting('layout') == null or kblock.setting('layout') == constant('\\Kreatys\\CmsBundle\\Block\\Service\\ContainerBlockService::TYPE_LIST')) %}
+            <button type="button" class="btn-u btn-u-xs" data-toggle="tooltip" data-placement="left" title="Ajouter un bloc" onclick="blockCreate({{ kblock.page.id }}, {{ kblock.id }});"><i class="fa fa-plus"></i></button>
+        {% endif %}
+        {% if kblock.type != 'kreatys_cms.block.service.icon_text' %}
+            <button type="button" class="btn-u btn-u-xs btn-u-brown compose-block-settings" data-toggle="tooltip" data-placement="left" title="Editer les paramètres du blocs" data-id="{{ kblock.id }}"><i class="fa fa-cogs"></i></button>
+        {% endif %}
+{#            <button type="button" class="btn-u btn-u-xs btn-u-orange" data-toggle="tooltip" data-placement="left" title="Editer le bloc"><i class="fa fa-edit"></i></button>#}
+        {% if kblock.type != block_container_type or (kblock.type == block_container_type and kblock.setting('layout')) %}
+        <button type="button" class="btn-u btn-u-xs btn-u-red" data-toggle="tooltip" data-placement="left" title="supprimer le bloc" onclick="blockDelete({{ kblock.id }});"><i class="fa fa-trash-o"></i></button>
+        <button type="button" class="btn-u btn-u-xs btn-u-default open-close-btn" data-toggle="tooltip" data-placement="left" title="Ouvrir / fermer le bloc" onclick="blockCloseOpen({{ kblock.id }},this);"><i class="fa fa-chevron-down"></i></button>
+        {% endif %}
+    </div> 
+{% endif %}
+
+{% if not front %}<div id="kcms-block-{{ kblock.id }}" class="kcms-block kcms-block-element">{% endif %}
+{% block block %}EMPTY CONTENT{% endblock %}
+{% if not front %}</div>{% endif %}

@@ -1,0 +1,16 @@
+
+services:
+    
+    kreatys_cms.snapshot_repository:
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method:  getRepository
+        class: Kreatys\CmsBundle\Repository\SnapshotRepository
+        arguments:
+            - Kreatys\CmsBundle\Entity\Snapshot
+            
+    kreatys_cms.page_repository:
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method:  getRepository
+        class: Kreatys\CmsBundle\Repository\PageRepository
+        arguments:
+            - Kreatys\CmsBundle\Entity\Page

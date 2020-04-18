@@ -1,0 +1,102 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+
+
+{% import _self as fcts %}
+{% macro render_container(kblock, num, front, parent) %}
+    {% if not front %}
+        {#        {{ dump(kblock.parent.id) }}#}
+        <ul class="list-unstyled compose-box-content-blocks">
+            <li class="compose-box-block compose-box-block-content" id="{{ kblock.id }}" data-num="{{ num }}" data-parent="{{ parent }}">
+                <a id="anchor-{{ kblock.id }}"></a>
+                <div class="compose-block-name compose-box-block-header" style="text-align: left;">{{ kblock.name }}</div>
+            {% endif %}
+            {% if not front or front and kblock.enabled %}
+                {{ kcms_render_block(kblock, front) }}
+            {% endif %}
+            {% if not front %}
+            </li>
+        </ul>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_list_container(kblock, front) %}
+    {% if not front %}
+        {#        {{ kblock.parent ? dump(kblock.parent.id) }}#}
+        {#        {{ dump(kblock.id) }}#}
+        <ul class="list-unstyled compose-box-content-blocks" {% if kblock.lvl == 0 %}id="block-master"{% endif %} data-parent="{{ kblock.id }}">
+        {% endif %}
+
+        {% set num = 0 %}
+        {% for child in kblock.children %}
+            {% set num = num + 1 %}
+            {% if not front %}
+                <li class="compose-box-block compose-box-block-content block-sortable close-box" id="{{ child.id }}" data-num="{{ num }}" data-parent="{{ child.parent.id }}">
+                    <a id="anchor-{{ child.id }}"></a>
+                    <div class="compose-block-name compose-box-block-header" style="text-align: left;">{{ child.name }} <small><i>({{ child.type|block_type_name }})</i></small></div>
+                {% endif %}
+                {% if not front or front and child.enabled %}
+                    {#                    {{ dump(child) }}#}
+                    {{ kcms_render_block(child, front) }}
+                {% endif %}     
+                {% if not front %}
+                </li>
+            {% endif %}            
+        {% endfor %}
+
+        {% if not front %}
+        </ul>
+    {% endif %}
+{% endmacro %}
+
+{% block block %}
+
+    {% set blayout = kblock.setting('layout') %}
+    {# ********************** Container principal **********************  #}
+    {% if blayout == null or blayout == constant('\\Kreatys\\CmsBundle\\Block\\Service\\ContainerBlockService::TYPE_LIST') %}
+        {% if preRender %}
+            [øchildrenø]
+        {% else %}
+            {{ fcts.render_list_container(kblock, front) }}
+        {% endif %}
+    {% else %}
+        {# ********************** Colonnes **********************  #} 
+        {% set cols = blayout|split('-') %}
+        {% if front %}
+            <div class="{{ kblock.settings.background is defined ? settings.background:'' }}" id="{{ settings.anchor }}">
+                {% if kblock.settings.menu %}
+                    {% include 'KreatysCmsBundle:Block:Menu/navbar.html.twig' %}
+                {% endif %}
+                {% if kblock.lvl < 2 %}
+                    <div class="container">
+                {% endif %}
+                <div class="{{ settings.padding_top is defined ? ' '~settings.padding_top:'' }} {{ settings.padding_bottom is defined ? ' '~settings.padding_bottom:'' }}">
+        {% endif %}
+        <div class="row">
+            {% for child in kblock.children %}
+                {% set col = cols[loop.index0] %}
+                {% set offset = '' %}
+                {% if kblock.setting('layout_offset') and not loop.first %}
+                    {% set col = col - kblock.setting('layout_offset') %}
+                    {% set offset = ' col-'~(settings.responsive is defined ? settings.responsive:'md')~'-offset-'~kblock.setting('layout_offset') %}
+                {% endif %}
+                <div class="col-{{ settings.responsive is defined ? settings.responsive:'md' }}-{{ col }}{{ offset }}">
+                    {% if preRender %}
+                        [øchild{{ loop.index0 }}ø]
+                    {% else %}
+                        {{ fcts.render_container(child, loop.index, front, kblock.parent.id) }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        {% if front %}
+                </div>
+            {% if kblock.lvl < 2 %}
+                </div>
+            {% endif %}
+            </div>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+    {% if not front %}<div class="text-center"><div style="display: inline-block; width: 100%;">{% else %}<div class="{{ settings.background }}">{% if kblock.lvl == 1 %}<div class="container">{% endif %}<div class="{{ settings.padding_top }} {{ settings.padding_bottom }}">{% endif %}
+            
+        {% if not front %}<a href="#" onclick="blockEditContents({{ kblock.id }})" data-toggle="tooltip" data-placement="top" title="Cliquer pour changer/modifier la vidéo">{% endif %}
+        {% if contents.video is not null %}
+                               
+           <div class="kvideo">
+               <video{% if front %}{% if settings.autoplay == '1' %} autoplay loop{% endif %}{% if settings.controls == '1' %} controls{% endif %}{% endif %}>
+                    <source src="{% path contents.video, 'reference' %}" type="video/mp4">
+                    <p>Your browser does not support H.264/MP4.</p>
+                </video>
+           </div>            
+            
+        {% else %}
+            <img src="https://placehold.it/555x250" class="img-responsive" />
+        {% endif %} 
+        {% if not front %}</a>{% endif %}
+        
+    {% if not front %}</div></div>{% else %}</div>{% if kblock.lvl == 1 %}</div>{% endif %}</div>{% endif %}
+{% endblock %}

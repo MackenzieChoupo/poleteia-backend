@@ -1,0 +1,4 @@
+kreatys_routing:
+    resource: "kreatys_routing.yml"
+
+

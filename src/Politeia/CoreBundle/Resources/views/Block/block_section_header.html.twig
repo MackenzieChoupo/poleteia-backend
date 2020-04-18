@@ -1,0 +1,18 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+    {% if front %}
+        <div class="page-header{% if contents.sousTitre %} wsub{% endif %}">
+            <h2>{{ contents.titre|raw }}</h2>
+        </div>
+        {% if contents.sousTitre %}
+            <div class="sub-header">
+                <h4>{{ contents.sousTitre|raw }}</h4>
+            </div>
+        {% endif %}
+    {% else %}
+        <h2 class="title-editable" data-id="{{ kblock.id }}" data-field="titre">{{ contents.titre|raw }}</h2>
+        <h4 class="title-editable" data-id="{{ kblock.id }}" data-field="sousTitre">{{ contents.sousTitre|raw }}</h4>
+    {% endif %}
+{% endblock %}

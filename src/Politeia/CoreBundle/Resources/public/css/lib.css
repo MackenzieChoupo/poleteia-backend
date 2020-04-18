@@ -1,0 +1,13 @@
+/* 
+    Created on : 6 déc. 2017, 11:17:15
+    Author     : remi
+*/
+@keyframes spinner-round-animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=lib.css.map */

@@ -1,0 +1,60 @@
+kreatys_cms:
+    templates:
+#        layout:                         KreatysCmsBundle::layout.html.twig
+#        show:                           KreatysCmsBundle:Page:show.html.twig
+#        show_breadcrumb:                KreatysCmsBundle:Page:show_breadcrumb.html.twig
+#        block_raw_content:              KreatysCmsBundle:Block:block_raw_content.html.twig
+#        block_title_text:               KreatysCmsBundle:Block:block_title_text.html.twig
+#        block_contact_form:             KreatysCmsBundle:Block:block_form_contact.html.twig
+#        block_icon_text:                KreatysCmsBundle:Block:block_icon_text.html.twig
+#        block_container:                KreatysCmsBundle:Block:block_container.html.twig
+#        block_container_anchor:         KreatysCmsBundle:Block:block_container_anchor.html.twig
+#        block_gallery_slideshow:        KreatysCmsBundle:Block:Gallery/slideshow.html.twig
+#        block_menu:                     KreatysCmsBundle:Block:block_menu.html.twig
+    
+    block:
+#        default: kreatys_cms.block.service.title_text
+#        container: kreatys_cms.block.service.container
+#        container_anchor: kreatys_cms.block.service.container_anchor
+        security:
+            ROLE_ADMIN:
+                - kreatys_cms.block.service.container
+                - kreatys_cms.block.service.container_anchor
+                - kreatys_cms.block.service.raw_content
+#                - kreatys_cms.block.service.title_text
+#                - kreatys_cms.block.service.icon_text # NOTE : coder le css si actif
+                - kreatys_cms.block.service.image
+                - kreatys_cms.block.service.gallery
+#                - kreatys_cms.block.service.list_icon # NOTE : coder le css si actif
+                - kreatys_cms.block.service.titre
+#                - kreatys_cms.block.service.map
+#                - kreatys_cms.block.service.title_list_icon # NOTE : coder le css si actif
+                - kreatys_cms.block.service.contact_form
+                - kreatys_cms.block.service.menu
+                
+            ROLE_SUPER_ADMIN:
+#                - kreatys_user.block.service.login
+#                - kreatys_user.block.service.register
+#                - kreatys_user.block.service.resetting_password
+        settings:
+#            text_align:
+            
+#            background:
+
+    page:
+        security:
+#            roles: {'ROLE_USER':'avec un compte client'}
+        options:
+#            titre:
+#                input: true
+#                afficher: true
+#            fil_ariane:
+#                lien: true
+#                afficher: true
+
+    menu:
+        config:
+            ancre: true
+            sous_titre: false
+            multi_level: false
+            

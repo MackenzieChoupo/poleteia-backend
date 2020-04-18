@@ -1,0 +1,28 @@
+{# TODO extends config kreatys_cms.templates.block_base #}
+{% extends 'KreatysCmsBundle:Block:block_base.html.twig' %}
+
+{% block block %}
+    {% if front %}
+        <div class="{{ settings.background }}">
+            {% if kblock.lvl == 1 %}
+                <div class="container">
+                {% endif %}
+                <div class="{{ settings.padding_top }} {{ settings.padding_bottom }}">
+                {% endif %}
+                <div class="headline"><h2{% if not front %} class="title-editable" data-id="{{ kblock.id }}" data-field="title"{% endif %} >{{ contents.title }}</h2></div>
+                <div >
+                    <ul class="list-unstyled who">
+                        {% for item in contents.list %}
+                            <li><a href="{{ item.url ? item.url : '#' }}"><i class="fa fa-{{ item.icon }}"></i> {{ item.text|replace({',': '<br>', '\r\n': '<br>'})|raw }}</a></li>
+                            {% endfor %}
+                    </ul>
+                    {#        {{ dump(contents.list) }}#}
+                </div>
+                {% if front %}
+                </div>
+                {% if kblock.lvl == 1 %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

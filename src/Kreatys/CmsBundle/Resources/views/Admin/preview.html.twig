@@ -1,0 +1,50 @@
+{% extends base_layout %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .preview-btn {
+            position: absolute;
+            z-index: 10000;
+            top: 150px;
+            left: 0px;
+        }
+        .preview-btn a {
+            display: block;
+        }
+    </style>
+{% endblock %}
+
+{#{% block header %}{% endblock %}#}
+
+
+{% block content %}
+
+    {{ kcms_render_block(page.masterBlock, true) }}
+
+    <div class="preview-btn">
+        <ul class="list-unstyled">
+            <li><a href="javascript: window.history.back()" class="btn-u btn-u-sm" data-toggle="tooltip" data-placement="right" title="Revenir"><i class="fa fa-reply"></i></a></li>
+            <li><a href="{{ admin.generateObjectUrl('compose', page) }}" class="btn-u btn-u-sm btn-u-default" data-toggle="tooltip" data-placement="right" title="Composer"><i class="fa fa-magic"></i></a></li>
+        </ul>
+    </div>
+
+{% endblock %}
+
+{#{% block footer %}{% endblock %}#}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a, button').not('.preview-btn a').bind("click", function () {
+                return false;
+            }); // desactivation de tous les liens de la page. Nous sommes en preview !!! pas sur le front !!!
+            $('[data-toggle="tooltip"]').tooltip({
+                container: 'body'
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends base_template %}
+
+{% block actions %}
+    <li>{% include 'SonataAdminBundle:Button:list_button.html.twig' %}</li>
+    <li>{% include 'SonataAdminBundle:Button:create_button.html.twig' %}</li>
+{% endblock %}
+
+{% block navbar_title %}
+    Prévisualisation
+{% endblock %}
+
+{% block tab_menu %}
+    {% include 'KreatysCmsBundle:Admin:Page/tab_menu.html.twig' with {
+        'action':      action,
+        'admin':       admin,
+        'currentSite': 'TFreelances',
+    } only %}
+{% endblock %}
+
+    
+    

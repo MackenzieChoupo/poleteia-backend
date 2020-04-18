@@ -1,0 +1,59 @@
+imports:
+    - { resource: 'block.yml' }
+    - { resource: 'form.yml' }
+    - { resource: 'repository.yml' }
+    - { resource: 'manager.yml' }
+    - { resource: 'admin.yml' }
+    - { resource: 'twig.yml' }
+
+
+services:
+    
+    # Front
+    app.menu_builder:
+        class: Kreatys\CmsBundle\Menu\MenuBuilder
+        arguments:
+            - @knp_menu.factory
+            - @doctrine.orm.entity_manager
+            - @router
+        tags:
+            - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
+    
+    # Routing
+    kreatys_cms.routing.loader.db:
+        class: Kreatys\CmsBundle\Routing\PageLoader
+        tags:
+            - { name: routing.loader }
+        arguments:
+            - @doctrine.orm.entity_manager
+            - %kernel.default_locale%
+            - %sonata_translation.locales%
+    
+    
+    # Listner
+    kreatys_cms.listener.kernel:
+        class:  Kreatys\CmsBundle\Listener\KernelListener
+        arguments:
+            - @service_container
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+            
+     
+    # Media povider      
+    kreatys_cms.media.provider.video:
+        class: Kreatys\CmsBundle\Provider\VideoProvider
+        arguments:
+            - kreatys_cms.media.provider.video
+            - @sonata.media.filesystem.local
+            - @sonata.media.cdn.server
+            - @sonata.media.generator.default
+            - @sonata.media.thumbnail.format
+            - ['mp4', 'h264', 'mpg', 'mpeg']
+            - ['video/mp4', 'video/mpeg', 'video/H264']                    
+        tags:
+            - { name: sonata.media.provider }
+        calls:
+           - [ setTemplates, [{helper_view: KreatysCmsBundle:Provider:view_video.html.twig, helper_thumbnail: SonataMediaBundle:Provider:view_file.html.twig}]]
+
+
